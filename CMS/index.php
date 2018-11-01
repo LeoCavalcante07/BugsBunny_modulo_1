@@ -123,16 +123,17 @@
                 
                 
                 <div class="caixa_opt_destaques">
+                    <a href="admBancas.php">
                     
+                        <div class="caixa_opt_destaques_img">
+                            <img src="imagens/bancas.png">
+                        </div>
+                        <div class="caixa_opt_destaques_text">
+                            <p>Bancas</p>
+                        </div>                     
                     
-                    <div class="caixa_opt_destaques_img">
-                        <img src="imagens/bancas.png">
-                    </div>
-                    <div class="caixa_opt_destaques_text">
-                        <p>Bancas</p>
-                    </div>                        
-                        
-                    
+                    </a>
+   
                 </div>                 
             </div>
             

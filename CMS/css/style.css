@@ -284,24 +284,7 @@ a{
 }
 
 
-.caixa_form_esquerda{
-    width: 380px;
-    height: 420px;
-    float: left;
-    margin-right: 110px;
-    
-    
-    
-}
 
-.caixa_form_direita{
-    width: 650px;
-    height: 420px;
-    float: left;  
-    border-left: solid 1px black;
-    padding-left: 40px;
-
-}
 
 .caixa_form_esquerda p{
     font-size: 25px;
@@ -455,6 +438,11 @@ a{
     
 }
 
+#visualizarFoto img{
+    width: 390px;
+    height: 180px;
+}
+
 
 /*FIM DESTAQUE*/
 
@@ -482,7 +470,7 @@ a{
 
 .seg_table_sobre{
     margin-top: 70px;   
-    width: 590px;
+    width: 650px;
     height: 900px;
     margin-right: auto;
     margin-left: auto;
@@ -499,9 +487,42 @@ a{
     margin-left: 350px;
 }
 
+.tdImagem img{
+    width: 400px;
+    height: 300px;
+}
+
 
 
 /*FIM ADM SOBRE*/
+
+
+
+
+/*ADM BANCAS*/
+
+.caixa_seg_bancas_opt{
+    width: 550px;
+    height: 255px;
+    border: solid 1px black;
+    margin-right: auto;
+    margin-left: auto;      
+}
+
+.caixa_bancas_opt{
+    width: 250px;
+    height: 250px;
+    border: solid 1px black;
+    float: left;
+}
+
+
+
+
+
+/*IM ADM BANCAS*/
+
+
 
 
 /*footer*/

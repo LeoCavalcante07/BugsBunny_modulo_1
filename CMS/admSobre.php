@@ -76,7 +76,7 @@
             $texto = $rsSobre['texto'];
             $titulo = $rsSobre['titulo'];
             $nomeImagem = $rsSobre['foto'];
-            $imagem = "<img src='".$nomeImagem."' height='180px' width='350px'>";                                    
+            $imagem = "<img src='".$nomeImagem."'>";                                    
         }
     }
 
@@ -306,7 +306,7 @@
             
             
         <div class="seg_table_sobre">
-            <table width="500px" height="300px" border="1px">
+            <table width="650px" height="300px" border="1px">
                 
                 <?php
                     $sql = "select * from tbl_sobre";
@@ -334,14 +334,14 @@
                     </tr>
 
                     <tr height="200px">
-                        <td class="td<?php echo($i)?>">
+                        <td class="tdImagem">
     <!--                        imagem-->
                             <img id="imagem<?php echo($i)?>" src="<?php echo($rsSobre['foto'])?>">
                             
                         </td>
 
                         <td>
-                            <textarea>
+                            <textarea name="txtTexto" disabled style="height: 290px; width:200px; resize: none; background-color: white; font-size:14px;">
                                 <?php echo($rsSobre['texto'])?>
                             </textarea>
 

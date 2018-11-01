@@ -1,74 +1,72 @@
-<?php
-
-    include_once('../conexao.php');
-
-    session_start();
-
-    $conexao = getConexao();
-
-
-    if(isset($_GET['opt'])){
-        
-        $opt = $_GET['opt'];
-        $id = $_GET['id'];
-        
-        if($opt == "excluir"){
-            $sql = "delete from tbl_fale_conosco where id =".$id;
-            
-            mysqli_query($conexao, $sql);
-            
-            header('location:admFaleConosco.php');
-        }
-    }
-
-    
-
-
-    
-
-
-?>
-
-
-
 <!doctype html>
 
 <html>
     <head>
         <link rel="stylesheet" href="css/style.css" type="text/css">
         
-        <script src="../engine1/jquery.js"></script>
+        
+        <script src="../js/jquery.min.js"></script>
+        <script src="../engine1/jquery.form.js"></script>
         
         <script>
-            //código para abrir a modal
+            
+           
+        
             $(document).ready(function(){
-               
-                $(".visualizar").click(function(){
-                    $(".container").fadeIn(500);
-                })
+                
+               $('#fleFoto').live('change', function(){
+                  
+                   
+                    $('#frmFoto').ajaxForm({                        
+                        target:'#visualizarFoto'
+
+                    }).submit();                    
+                   
+               });
+                
+                
+//                $('#btnSalvar').click(function(){
+//                   frmCadastro.submit();
+//                });
+                
+
+                
+                ////CÓDIGO MODAL em construção/////
+
+                    $(".visualizara").click(function(){
+
+                        $(".container").fadeIn(500);
+                    });
+
+                
+                
+        
                 
             });
             
             
-            function modal(idComentario){
+            function modal(){
                 
-                
+
                 $.ajax({
                     type: "GET",
-                    url: "modal_fale_conosco.php",
-                    data: {idRegistro:idComentario},
-                       
-                       
+                    url: "modal_destaque.php",                     
+
                     success: function(dados){
                         $('.modal').html(dados);
                     }
-                    
-                })
-                
-            }
+
+                });
+
+            }  
             
             
-        </script>
+            ///////MODAL EM CONSTRUÇÃO////
+        
+        </script>        
+
+
+
     </head>
     
     <body>
@@ -156,81 +154,18 @@
             </div>
             
 <!--            Fim Menu      -->
-
             
             
-            
-<!--CONTEUDO            -->
-
-            <div class="caixa_fale_titulo">
-                <h1>Comentários </h1>
+            <div class="caixa_seg_bancas_opt">
+                <div class="caixa_bancas_opt" style="margin-right: 20px;">
+                    <img src="imagens/main.png">
+                </div>
+                
+                <div class="caixa_bancas_opt">
+                    <img src="">
+                </div>                
             </div>
-            <div class="caixa_fale_comentarios">
-                <table width="600px" border="1px">
-                    <tr height="50px">
-                        <td>
-                            Email
-                        </td>
-                        
-                        <td>
-                            Produto                        
-                        </td>
-                        
-                        <td>
-                            Opções
-                        </td>
-                    </tr>
-                    
-                    
-                    <?php
-                    
-                        $sql = "select id, email, informacoesProduto from tbl_fale_conosco";
 
-                        $select = mysqli_query($conexao, $sql);
-
-                        while($rsConsulta = mysqli_fetch_array($select)){
-                    ?>
-                    <tr height="50px">
-                        <td>
-                            <?php
-                                echo($rsConsulta['email']);
-                            ?>
-                        </td>
-                        
-                        <td>
-                        
-                            <?php
-                                echo($rsConsulta['informacoesProduto']);
-                            ?>                        
-                        </td>   
-                        
-                        <td>
-                            <a href="#" class="visualizar" onclick="modal(<?php echo($rsConsulta['id']) ?>)">
-                                <img src="imagens/search.png">
-                            </a>
-                            
-                            <a href="admFaleConosco.php?opt=excluir&id=<?php echo($rsConsulta['id'])?>">
-                                <img src="imagens/delete.png">
-                            </a>
-                            
-                        </td>
-                    </tr>
-                    
-                    <?php
-                        }
-                    
-                    ?>
-                </table>
-            </div>
-            
-            
-<!--FIM CONTEUDO            -->
-            
-
-
-          
-            
-            
             
             
             
@@ -246,4 +181,4 @@
             
         </div>
     </body>
-</html>
+</html>            

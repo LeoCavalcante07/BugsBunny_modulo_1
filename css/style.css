@@ -864,12 +864,13 @@ div{
 }
 
 .caixa_destaque_section1{
-    height: auto;
-    min-height: 200px;  
-    width: 800px;    
+    height: 350px;
+/*    min-height: 200px;  */
+    width: 850px;    
     margin-left: auto;
     margin-right: auto; 
     margin-bottom: 100px;
+    
 }
 
 
@@ -904,14 +905,20 @@ div{
     float: left;    
 }
 
+.caixa_destaque_section1_img img{
+    height: 250px;
+    width: 400px;
+}
+
 
 
 .caixa_destaque_section2{
-    height: 250px;
-    width: 800px;    
+    height: 350px;
+    width: 850px;    
     margin-left: auto;
     margin-right: auto;  
-    margin-bottom: 100px;
+    
+    
     
 }
 
@@ -1208,6 +1215,7 @@ div{
     color: #03e200;
     font-size: 40px;    
 }
+
 
 
 

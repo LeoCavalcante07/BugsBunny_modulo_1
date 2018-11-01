@@ -76,6 +76,7 @@
             $texto = $rsDestaque['texto'];
             $titulo = $rsDestaque['titulo'];
             $nomeImagem = $rsDestaque['foto'];
+            $imagem = "<img src='".$nomeImagem."'>";
                                                
         }
     }
@@ -267,7 +268,7 @@
             <div class="seg_destaque_form">
                 <div id="visualizarFoto" onclick="escolherFoto()">
                     
-                    <img src="<?php echo($nomeImagem)?>">
+                    <?php echo($imagem)?>
                 </div>
                 <form id="frmFoto" action="upload.php" method="post" enctype="multipart/form-data">
                     <input type="file" id="fleFoto" name="fleFoto">
@@ -336,21 +337,21 @@
                     </tr>
 
                     <tr height="200px">
-                        <td class="td<?php echo($i)?>">
+                        <td class="tdImagem">
     <!--                        imagem-->
                             <img id="imagem<?php echo($i)?>" src="<?php echo($rsDestaque['foto'])?>">
                             
                         </td>
 
                         <td>
-                            <textarea name="txtTexto" style="resize: none; height: 290px;" disabled>
+                            <textarea name="txtTexto" disabled style="height: 290px; width:200px; resize: none; background-color: white; font-size:14px;">
                                 <?php echo($rsDestaque['texto'])?>
                             </textarea>
 
                         </td>                    
                     </tr>
                     <tr height="50px" align="center">
-                        <td colspan="2">
+                        <td colspan="2" >
                             <a href="admDestaque.php?id=<?php echo($rsDestaque['idDestaque'])?>&modo=excluir">                                
                                 <img src="imagens/delete.png">
                             </a>
