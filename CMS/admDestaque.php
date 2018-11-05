@@ -330,7 +330,12 @@
                     <tr height="50px">
                         <td colspan="2">
     <!--                        titulo-->
+                            
+                            
+                        
                             <?php echo($rsDestaque['titulo'])?>
+                            
+                            
                         </td>
 
 

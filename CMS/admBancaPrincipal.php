@@ -26,21 +26,21 @@
         
         if(isset($_POST['txtNomeFoto'])){
             
-            $titulo = $_POST['txtTitulo']; 
+            
             $nomeFoto = $_POST['txtNomeFoto'];
             $texto = $_POST['txtTexto'];  
             
             if($_POST['btnSalvar'] == "Salvar"){
-               $sql = "insert into tbl_banca(titulo, foto, texto) values('".$titulo."', '".$nomeFoto."', '".$texto."')"; 
+               $sql = "insert into tbl_banca_principal( foto, texto) values( '".$nomeFoto."', '".$texto."')"; 
             }else if($_POST['btnSalvar'] == "Editar"){
-                $sql = "update tbl_banca set titulo = '".$titulo."', foto = '".$nomeFoto."', texto = '".$texto."' where idBanca = ".$_SESSION['id'];
+                $sql = "update tbl_banca_principal set foto = '".$nomeFoto."', texto = '".$texto."' where idBancaPrincipal = ".$_SESSION['id'];
             }
             
-            //var_dump($sql);
+            //var_dump($sql); 
+            
             if(mysqli_query($conexao, $sql)){
                 echo("imagem uppada com success");  
-                header("location:admBancas.php"); 
-                
+                header("location:admBancaPrincipal.php"); 
             }
                 
             
@@ -59,24 +59,23 @@
         $_SESSION['id'] = $id;
         
         if($modo == "excluir"){
-            $sql = "delete from tbl_banca where idBanca =".$id;
+            $sql = "delete from tbl_banca_principal where idBancaPrincipal =".$id;
             
             if(mysqli_query($conexao, $sql)){
                 echo("<script>alert('Noticia excluida com sucesso')</script>");
-                header("location:admBancas.php");
+                header("location:admBancaPrincipal.php");
             }
             
         }else if($modo == "buscar"){
             
             $btnSubmit = "Editar";
             
-            $sql = "select * from tbl_banca where idBanca = ".$id;
+            $sql = "select * from tbl_banca_principal where idBancaPrincipal = ".$id;
             $select = mysqli_query($conexao, $sql);
             
             $rsSobre = mysqli_fetch_array($select);
             
             $texto = $rsSobre['texto'];
-            $titulo = $rsSobre['titulo'];
             $nomeImagem = $rsSobre['foto'];
             $imagem = "<img src='".$nomeImagem."'>";                                    
         }
@@ -90,9 +89,9 @@
         $id = $_GET['id'];
         
         if($_GET['atualizarStatus'] == 0){
-            $sql = "update tbl_banca set status = 1 where idBanca = ".$id;
+            $sql = "update tbl_banca_principal set status = 1 where idBancaPrincipal = ".$id;
         }else{
-            $sql = "update tbl_banca set status = 0 where idBanca = ".$id;
+            $sql = "update tbl_banca_principal set status = 0 where idBancaPrincipal = ".$id;
         }
         
         
@@ -280,11 +279,9 @@
 
                 </form>
                 
-                <form id="frmCadastro" action="admBancas.php" method="post" enctype="multipart/form-data">
+                <form id="frmCadastro" action="admBancaPrincipal.php" method="post" enctype="multipart/form-data">
 <!--                    Nome foto             -->
                     <input type="text" name="txtNomeFoto" style="display: none;" value="<?php echo($nomeImagem)?>">
-                    <br><br>
-                    Titulo: <input type="text" name="txtTitulo" value="<?php echo($titulo)?>">
                     <br><br>
                     Texto:  <textarea name="txtTexto" style="resize: none; height: 70px;">
                         <?php echo($texto)?>
@@ -311,7 +308,7 @@
             <table width="650px" height="300px" border="1px">
                 
                 <?php
-                    $sql = "select * from tbl_banca";
+                    $sql = "select * from tbl_banca_principal";
                     $select = mysqli_query($conexao, $sql);
                     
                     $i = 0; // variavel que sera concatenada com o id de cada objeto FILE para diferencia-los
@@ -326,14 +323,7 @@
                         }
                 ?>
               
-                    <tr height="50px">
-                        <td colspan="2">
-    <!--                        titulo-->
-                            <?php echo($rsSobre['titulo'])?>
-                        </td>
 
-
-                    </tr>
 
                     <tr height="200px">
                         <td class="tdImagem">
@@ -351,15 +341,15 @@
                     </tr>
                     <tr height="50px" align="center">
                         <td colspan="2">
-                            <a href="admBancas.php?id=<?php echo($rsSobre['idBanca'])?>&modo=excluir">                                
+                            <a href="admBancaPrincipal.php?id=<?php echo($rsSobre['idBancaPrincipal'])?>&modo=excluir">                                
                                 <img src="imagens/delete.png">
                             </a>
                             
-                            <a href="admBancas.php?id=<?php echo($rsSobre['idSobre'])?>&modo=buscar">
+                            <a href="admBancaPrincipal.php?id=<?php echo($rsSobre['idBancaPrincipal'])?>&modo=buscar">
                                 <img src="imagens/edit.png">
                             </a>
                             
-                            <a href="admBancas.php?id=<?php echo($rsSobre['idBanca'])?>&atualizarStatus=<?php echo($status)?>">
+                            <a href="admBancaPrincipal.php?id=<?php echo($rsSobre['idBancaPrincipal'])?>&atualizarStatus=<?php echo($status)?>">
                                 <img src="<?php echo($iconeAtivacao)?>">
                             </a>
                             

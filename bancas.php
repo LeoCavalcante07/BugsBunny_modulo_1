@@ -1,3 +1,26 @@
+<?php
+
+    $host = "localhost";
+    $user = "root";
+    $password = "bcd127";
+    $banco = "db_bugs_bunny";
+
+
+    if(!$conexao = mysqli_connect($host, $user, $password, $banco)){
+        echo("<script>alert('Ocorreu um erro na conexão com o banco, contate o administrador do site')</script>");    
+    }
+
+
+    
+
+?>
+
+
+
+
+
+
+
 <!doctype html>
 
 <html>
@@ -124,43 +147,73 @@
                     <h1>Nossas Bancas</h1>
                 </div>
                 
-                <div class="caixa_banca_principal_img">
                 
+                <?php
+                    $sql = "select * from tbl_banca_principal where status = 1";
+                
+                
+                
+                    $select = mysqli_query($conexao, $sql);
+                
+                    $rsConsulta = mysqli_fetch_array($select);
+                ?>
+                <div class="caixa_banca_principal_img">
+                    <img src="CMS/<?php echo($rsConsulta['foto'])?>">
+                    
                 </div>
                 
                 <div class="caixa_banca_descricao">
-                    <p>A primeira banca Bugs Bunny está localizada no centro de São Paulo,
-                    Vidas carregadas, objetivos alcançados, lataria enferrujada.
-                    Qual o sentido da existência de um ônibus que não anda mais</p>
+                    <p><?php echo($rsConsulta['texto'])?></p>
                 </div>
+                
+                
+                <?php 
+                    $sql = "select * from tbl_banca where status = 1";
+                    $select  = mysqli_query($conexao, $sql);
+                    $i = 0;
+                    while($rsConsulta = mysqli_fetch_array($select)){
+                        
+                        if($i % 2 == 0){
+            
+                ?>
                 
                 <div class="caixa_seg_secao1">
                     <div class="caixa_seg_secao1_2_titulo">
-                        <h2>Avenida Paulista</h2>
+                        <h2><?php echo($rsConsulta['titulo'])?></h2>
                     </div>
                     
                     <div class="caixa_secao1_img">
-                    
+                        <img src="CMS/<?php echo($rsConsulta['foto'])?>"/>
                     </div>
                     
                     <div class="caixa_secao1_texto">
-                        <p>as ambulâncias e caminhões de lixo, os populares e os que já foram de ima geração, os velhos e os antigos no Sonhos, planos, objetivos feitos em delírios conjugais. Pensamentos que a realidade fez questão de mostrar que estavam errados. </p>
+                        <p><?php echo($rsConsulta['texto'])?> </p>
                     </div>
                 </div>
                 
+                <?php
+                        }else{
+                ?>
+                
                 <div class="caixa_seg_secao2">
                     <div class="caixa_seg_secao1_2_titulo">
-                        <h2>Avenida Bonita</h2>
+                        <h2><?php echo($rsConsulta['titulo'])?></h2>
                     </div>
                     <div class="caixa_secao2_texto">
-                        <p>Tudo perfeitamente planejado, mas que não deixou de ser apenas um plano que não teve a oportunidade de sair do papel, pior, não teve  nem a oportunidade de sair das mentes juvenis apaixonadas para ir ao papel.</p>
+                        <p><?php echo($rsConsulta['texto'])?></p>
                     </div>                    
                     
                     <div class="caixa_secao2_img">
-                    
+                        <img src="CMS/<?php echo($rsConsulta['foto'])?>"/>
                     </div>
                     
                 </div>
+                
+                <?php
+                        }
+                        $i++;
+                    }
+                ?>
             </div>
             
             <div class="caixa_anuncio">

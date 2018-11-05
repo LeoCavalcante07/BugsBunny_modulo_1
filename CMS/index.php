@@ -123,7 +123,7 @@
                 
                 
                 <div class="caixa_opt_destaques">
-                    <a href="admBancas.php">
+                    <a href="admBancas.html">
                     
                         <div class="caixa_opt_destaques_img">
                             <img src="imagens/bancas.png">

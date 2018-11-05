@@ -725,7 +725,8 @@ div{
 
 /*Banca*/
 .caixa_banca_principal{
-    height: 1300px;
+    min-height: 1300px;
+    height: auto;
     width: 1410px;
     border: solid 1px white;
     float: left;
@@ -743,14 +744,17 @@ div{
 .caixa_banca_principal_img{
     height: 200px;
     width: 800px;
-    background-color: red;
-    background-image: url(../imagens/bancaPrincipal2.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     margin-left: auto;
     border: solid 1px black;
     
     margin-right: auto;    
+}
+
+.caixa_banca_principal_img img{
+    height: 200px;
+    width: 800px;    
 }
 
 .caixa_banca_descricao{
@@ -772,6 +776,7 @@ div{
     height: 350px;
     width: 810px;
     margin-top: 50px; 
+    margin-bottom: 100px;
     margin-left: auto;
     margin-right: auto;
 }
@@ -792,11 +797,15 @@ div{
     width: 350px;
     height: 250px;
     background-color: green;
-    background-image: url(../imagens/banca1.jpeg);
     background-size: cover;
     background-repeat: no-repeat;
     
     float: left;
+}
+
+.caixa_secao1_img img{
+    width: 350px;
+    height: 250px;   
 }
 
 .caixa_secao1_texto{
@@ -808,9 +817,10 @@ div{
 }
 
 .caixa_seg_secao2{
-    height: 200px;
+    height: 350px;
     width: 810px;
-    margin-top: 100px;
+    margin-bottom: 100px;
+   
     margin-left: auto;
     margin-right: auto;
 }
@@ -818,10 +828,14 @@ div{
 .caixa_secao2_img{
     width: 350px;
     height: 200px;
-    background-image: url(../imagens/banca2.jpg);
     background-size: cover;
     margin-left: 100px;
     float: left;
+}
+
+.caixa_secao2_img img{
+    width: 350px;
+    height: 200px;    
 }
 
 .caixa_secao2_texto{
