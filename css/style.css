@@ -384,6 +384,11 @@ div{
     float: left;
 }
 
+.caixa_sobre_section1_img img{
+    height: 300px;
+    width: 500px;    
+}
+
 .caixa_sobre_section1_texto{
     height: 350px;
     width: 500px;
@@ -417,13 +422,16 @@ div{
 
 .caixa_sobre_section2_img{
     height: 300px;
-    width: 550px;
+    width: 500px;
     margin-left: 60px;
 /*    margin-right: 60px;*/
     background-size: cover;
-    float:left;
-    
-    
+    float:left;        
+}
+
+.caixa_sobre_section2_img img{
+    height: 300px;
+    width: 500px;    
 }
 
 
@@ -728,7 +736,7 @@ div{
     min-height: 1300px;
     height: auto;
     width: 1410px;
-    border: solid 1px white;
+    border: solid 1px white; 
     float: left;
 }
 
@@ -758,9 +766,10 @@ div{
 }
 
 .caixa_banca_descricao{
-    height: 150px;
+    height: auto;
+    min-height: 150px;
     width: 800px;
-    margin-top: 40px;
+    margin-top: 40px;    
     text-align: justify;
     margin-left: auto;
     margin-right: auto;    
@@ -773,7 +782,8 @@ div{
 }
 
 .caixa_seg_secao1{
-    height: 350px;
+    height: auto;
+    min-height: 350px;
     width: 810px;
     margin-top: 50px; 
     margin-bottom: 100px;
@@ -810,17 +820,17 @@ div{
 
 .caixa_secao1_texto{
     width: 350px;
-    height: 250px;
-    
+    height: auto;
+    min-height: 250px; 
     margin-left: 100px;
     float: left;
 }
 
 .caixa_seg_secao2{
-    height: 350px;
+    height: auto;
+    min-height: 350px;
     width: 810px;
     margin-bottom: 100px;
-   
     margin-left: auto;
     margin-right: auto;
 }
@@ -840,7 +850,8 @@ div{
 
 .caixa_secao2_texto{
     width: 350px;
-    height: 220px;    
+    height: auto;
+    min-height: 250px;    
     float: left;
 }
 
@@ -1025,7 +1036,8 @@ div{
 
 .caixa_principal_promocoes{
     width: 100%;
-    height: 1600px;
+    height: auto;
+    min-height: 1400px;
     border: solid 1px white;
     float: left;
 }
@@ -1058,7 +1070,6 @@ div{
 .caixa_promocoes_principal_imagem{
     height: 300px;
     width: 400px;    
-    background-image: url(../imagens/imgMain.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     margin-left: 25px;    
@@ -1066,6 +1077,11 @@ div{
     margin-top: 28px;
     border-radius: 30px;
     float: left;
+}
+
+.caixa_promocoes_principal_imagem img{
+    height: 300px;
+    width: 400px;    
 }
 
 .caixa_promocoes_principal_detalhes{
@@ -1110,7 +1126,8 @@ div{
 
 .caixa_promocoes_section1{
     height: 360px;
-    width: 1140px;
+    width: 1200px;
+    background-color: red;
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 100px;
@@ -1139,7 +1156,7 @@ div{
 .caixa_promocoes_produto{
     height: 100%;
     width: 300px;
-    margin-right: 100px;
+    margin-right: 70px;
     border: solid 1px black;
     padding-left: 10px;
     float: left;
@@ -1153,24 +1170,29 @@ div{
 
 .caixa_promocoes_seg_imagem{
     margin-top: 5px;
+    background-color: red;
     height: 150px;
     width: 100%;
     margin-left: auto;
-    margin-right: auto;        
+    margin-right: auto;  
 }
 
 
 
 .caixa_promocoes_imagem{
     margin-top: 5px;
-    margin-bottom: 5px;
-      
+    margin-bottom: 25px;
+    width: 100%;
     height: 350px;
     
-    background-image: url(../imagens/capaRevista.webp);
+/*    background-image: url(../imagens/capaRevista.webp);*/
     background-size: cover;
     background-repeat: no-repeat;
-    background-color: red;
+}
+
+.caixa_promocoes_imagem img{
+    width: 100%;
+    height: 350px;    
 }
 
 .caixa_promocoes_produto:hover{

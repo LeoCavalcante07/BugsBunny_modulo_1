@@ -355,7 +355,7 @@
                                 <img src="imagens/delete.png">
                             </a>
                             
-                            <a href="admBancas.php?id=<?php echo($rsSobre['idSobre'])?>&modo=buscar">
+                            <a href="admBancas.php?id=<?php echo($rsSobre['idBanca'])?>&modo=buscar">
                                 <img src="imagens/edit.png">
                             </a>
                             

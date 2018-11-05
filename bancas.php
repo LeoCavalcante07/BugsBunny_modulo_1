@@ -183,7 +183,7 @@
                     </div>
                     
                     <div class="caixa_secao1_img">
-                        <img src="CMS/<?php echo($rsConsulta['foto'])?>"/>
+                        <img src="CMS/<?php echo($rsConsulta['foto'])?>">
                     </div>
                     
                     <div class="caixa_secao1_texto">
@@ -204,7 +204,7 @@
                     </div>                    
                     
                     <div class="caixa_secao2_img">
-                        <img src="CMS/<?php echo($rsConsulta['foto'])?>"/>
+                        <img src="CMS/<?php echo($rsConsulta['foto'])?>">
                     </div>
                     
                 </div>

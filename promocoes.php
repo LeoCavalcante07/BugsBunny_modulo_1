@@ -1,3 +1,51 @@
+<?php
+
+    $host = "localhost";
+    $user = "root";
+    $password = "bcd127";
+    $banco = "db_bugs_bunny";
+
+    $imgPromocao = "";
+    $tituloPromocao=""; 
+    $descPromocao = "";
+    $precoAtual = "";
+    
+
+
+    if(!$conexao = mysqli_connect($host, $user, $password, $banco)){
+        echo("<script>alert('Ocorreu um erro na conexão com o banco, contate o administrador do site')</script>");    
+    }   
+
+    
+
+    if(isset($_GET['id'])){
+        $id = $_GET['id'];
+        
+        $sql = "select p.nome, p.desc, p.foto, pp.preco from tbl_produto as p, tbl_preco_produto as pp where p.status = 1 and pp.to_date is null and p.idProduto = ".$id." and pp.idProduto = ".$id;
+        
+        //var_dump($sql);
+        $select = mysqli_query($conexao, $sql);
+        $rsConsulta = mysqli_fetch_array($select);
+        
+        $imgPromocao = $rsConsulta['foto'];
+        $tituloPromocao = $rsConsulta['nome'];
+        $descPromocao = $rsConsulta['desc'];
+        $precoAtual = $rsConsulta['preco'];
+        
+        
+        
+        
+    }
+
+
+    
+
+?>
+
+
+
+
+
 
 <!doctype html>
 <html>
@@ -12,8 +60,24 @@
         <!-- Example assets -->
         <link rel="stylesheet" type="text/css" href="examples/connected-carousels/jcarousel.connected-carousels.css">
 
-        <script type="text/javascript" src="libs/jquery/jquery.js"></script>
-        <script type="text/javascript" src="dist/jquery.jcarousel.min.js"></script>
+        <script src="CMS/js/jquery.min.js"></script>
+        <script src="CMS/js/jquery.form.js"></script>
+        
+        <script>
+            function verPromocao(id){
+                $.ajax({
+                   type:"get",
+                    url:"promocoes.php?id="+id,
+                    success:function(){
+                        alert(id)
+                        //content.html();
+                    }
+                    
+                });
+            }
+            
+
+        </script>
 
         <script type="text/javascript" src="examples/connected-carousels/jcarousel.connected-carousels.js"></script>
         
@@ -120,17 +184,15 @@
                 
                 <div class="caixa_promocoes_principal">
                     <div class="caixa_promocoes_principal_imagem">
-                    
+                        <img src="<?php echo($imgPromocao)?>">
                     </div>
                             <div class="caixa_promocoes_principal_detalhes">
                                 <div class="caixa_promocoes_principal_detalhes_nome">
-                                    <p>Magazine</p>
+                                    <p><?php echo($tituloPromocao)?></p>
                                 </div>
                                 
                                 <div class="caixa_promocoes_principal_detalhes_descricao">
-                                    <p>
-                                        E como ela conseguiu amarrar ele? Simples. Nenhum amigo de bar enxerga que a insegurança dele combina com a vontade de cuidar das pessoas que ela tem. Que ambos querem ter uma filha um dia, e até pensaram no mesmo nome.
-                                    </p>
+                                    <p><?php echo($descPromocao)?> </p>
                                 </div>
                                 
                                 <div class="caixa_promocao_detalhes_preco_antigo">
@@ -138,13 +200,14 @@
                                 </div>
                                 
                                 <div class="caixa_promocao_detalhes_preco_atual">
-                                    <p>R$30,00</p>
+                                    <p>R$<?php echo($precoAtual)?></p>
                                 </div>                                
                                 
                             </div>                    
                 </div>
                 
                 <div class="caixa_promocoes_section1">
+<!--
                     <div class="caixa_promocoes_produto">
                         <div class="caixa_promocoes_seg_imagem">
                             <div class="caixa_promocoes_imagem">
@@ -159,21 +222,37 @@
                             <p>Ver promoção</p>
                         </div> 
                     </div>
+-->
                     
+                    <?php
+                        $sql = "select * from tbl_produto where status =1";
+                        $select = mysqli_query($conexao, $sql);
+                    
+                        //var_dump($sql);
+                        
+                        while($rsConsulta = mysqli_fetch_array($select)){
+                    ?>
                     <div class="caixa_promocoes_produto">
                         <div class="caixa_promocoes_seg_imagem">
                             <div class="caixa_promocoes_imagem">
-                            
+                                <img src="<?php echo($rsConsulta['foto'])?>">
                             </div>
                         </div>
                         
                      
 
                         <div class="caixa_promocao_detalhes">
-                            <p>Ver promoção</p>
+                            <a href="promocoes.php?id=<?php echo($rsConsulta['idProduto'])?>" class="verPromocao">
+                                <p>Ver promoção</p>
+                            </a>
                         </div>                        
                     </div>
                     
+                    <?php
+                        }
+                    ?>
+                    
+<!--
                     <div class="caixa_promocoes_produto" style="margin-right: 0px;">
                         <div class="caixa_promocoes_seg_imagem">
                             <div class="caixa_promocoes_imagem">
@@ -186,8 +265,10 @@
                             <p>Ver promoção</p>
                         </div>                   
                     </div>
+-->
                 </div>
                 
+<!--
                 <div class="caixa_promocoes_section2">
                     <div class="caixa_promocoes_produto">
                         <div class="caixa_promocoes_seg_imagem">
@@ -205,7 +286,7 @@
                     <div class="caixa_promocoes_produto">
                         <div class="caixa_promocoes_seg_imagem">
                             <div class="caixa_promocoes_imagem">
-                            
+                                <img src="imagens/capaRevista.webp"/>
                             </div>
                         </div>
                         
@@ -231,6 +312,8 @@
                     </div>
                 </div>
                 
+-->
+<!--
                 <div class="caixa_promocoes_section3">
                     <div class="caixa_promocoes_produto">
                         <div class="caixa_promocoes_seg_imagem">
@@ -273,6 +356,7 @@
                         </div>                     
                     </div>
                 </div>
+-->
             </div>
             
             

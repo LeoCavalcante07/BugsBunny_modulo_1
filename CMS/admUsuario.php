@@ -2,6 +2,10 @@
 
     session_start();
 
+    $icone_ativacao = "imagens/desativado.png";
+
+    $x = 0;
+
     $btnSalvar = "Inserir";
 
     $host = "localhost";
@@ -92,6 +96,28 @@
             $nomeN = $rsConsulta['nomeN'];
             
         }
+    }
+
+
+
+
+
+    if(isset($_GET['mudar'])){
+        
+        $id = $_GET['id'];
+        
+        if($_GET['mudar'] == 0){
+            $sql = "update tbl_usuarios status = 1 where id = ".$id;
+            
+            $x = 1;
+        }else{
+            $sql = "update tbl_usuarios set status = 0 where id = ".$id;
+            
+        }
+        
+        
+        mysqli_query($conexao, $sql);
+        
     }
 
 ?>
@@ -261,13 +287,19 @@
                     
                     <?php
                         
-                        $sql = "select u.id as idUsuario, u.nome as nomeUsuario, u.email, n.nome as nomeNivel from tbl_niveis as n, tbl_usuarios as u where u.idNivel = n.id";
+                        $sql = "select u.id as idUsuario, u.nome as nomeUsuario, u.email, n.nome as nomeNivel, u.status as uStatus from tbl_niveis as n, tbl_usuarios as u where u.idNivel = n.id";
                     
                         
                     
                         $select = mysqli_query($conexao, $sql);                                                            
                     
                         while($rsConsulta = mysqli_fetch_array($select)){
+                            
+                            if($rsConsulta['uStatus'] == 0){                              
+                                    $icone_ativacao = "imagens/desativado.png";
+                                }else if($rsConsulta['uStatus'] == 1){
+                                    $icone_ativacao = "imagens/ativado.png";
+                                }
                             
                         
                     
@@ -287,7 +319,7 @@
                             
                             <a href="admUsuario.php?id=<?php echo($rsConsulta['idUsuario'])?>&opt=buscar"><img src="imagens/edit.png"></a>
                             
-                            <a><img src="imagens/ativado.png"></a>
+                           <a href="admUsuario.php?id=<?php echo($rsConsulta['idUsuario'])?>&mudar=<?php echo($x)?>"><img src="<?php echo($icone_ativacao)?>" id="imagem_ativar_desativar"></a>
                             
                         </td>
                     </tr>
