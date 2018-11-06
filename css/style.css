@@ -1127,9 +1127,10 @@ div{
 }
 
 .caixa_promocoes_section1{
-    height: 360px;
+    height: auto;
+    min-height: 360px;
+    overflow: hidden;
     width: 1200px;
-    background-color: red;
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 100px;
@@ -1156,10 +1157,9 @@ div{
 
 
 .caixa_promocoes_produto{
-    height: 100%;
+    height: 400px;
     width: 300px;
     margin-right: 70px;
-    border: solid 1px black;
     padding-left: 10px;
     float: left;
 }

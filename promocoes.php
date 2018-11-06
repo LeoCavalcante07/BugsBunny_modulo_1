@@ -9,6 +9,7 @@
     $tituloPromocao=""; 
     $descPromocao = "";
     $precoAtual = "";
+    $precoAntigo = "";
     
 
 
@@ -21,7 +22,10 @@
     if(isset($_GET['id'])){
         $id = $_GET['id'];
         
-        $sql = "select p.nome, p.desc, p.foto, pp.preco from tbl_produto as p, tbl_preco_produto as pp where p.status = 1 and pp.to_date is null and p.idProduto = ".$id." and pp.idProduto = ".$id;
+//        $sql = "select p.nome, p.desc, p.foto, pp.preco from tbl_produto as p, tbl_preco_produto as pp where p.status = 1 and pp.to_date is null and p.idProduto = ".$id." and pp.idProduto = ".$id;
+        
+        $sql = "select p.nome, p.desc, p.foto, pp.preco, pp.from_date from tbl_produto as p, tbl_preco_produto as pp where p.status = 1 and pp.to_date is null and p.idProduto = ".$id." and pp.idProduto = ".$id; 
+        
         
         //var_dump($sql);
         $select = mysqli_query($conexao, $sql);
@@ -31,6 +35,21 @@
         $tituloPromocao = $rsConsulta['nome'];
         $descPromocao = $rsConsulta['desc'];
         $precoAtual = $rsConsulta['preco'];
+        
+        $from_date_preco_atual = $rsConsulta['from_date'];
+        
+        $sql2 = "select preco from tbl_preco_produto where idProduto = ".$id." and to_date ='".$from_date_preco_atual."'";
+        
+        
+        
+        //var_dump($sql2);
+        
+        $select2 = mysqli_query($conexao, $sql2);
+        
+        $rsPrecoAntigo = mysqli_fetch_array($select2);
+        
+        $precoAntigo = $rsPrecoAntigo['preco'];
+        
         
         
         
@@ -196,7 +215,7 @@
                                 </div>
                                 
                                 <div class="caixa_promocao_detalhes_preco_antigo">
-                                    <p>R$35,00</p>
+                                    <p>R$<?php echo($precoAntigo)?></p>
                                 </div>
                                 
                                 <div class="caixa_promocao_detalhes_preco_atual">
@@ -207,25 +226,10 @@
                 </div>
                 
                 <div class="caixa_promocoes_section1">
-<!--
-                    <div class="caixa_promocoes_produto">
-                        <div class="caixa_promocoes_seg_imagem">
-                            <div class="caixa_promocoes_imagem">
-                            
-                            </div>
 
-                        </div>
-                        
-
-
-                        <div class="caixa_promocao_detalhes">
-                            <p>Ver promoção</p>
-                        </div> 
-                    </div>
--->
                     
                     <?php
-                        $sql = "select * from tbl_produto where status =1";
+                        $sql = "select * from tbl_produto as p, tbl_preco_produto as pp where p.status = 1 and pp.promocao = 1 and p.idProduto = pp.idProduto";
                         $select = mysqli_query($conexao, $sql);
                     
                         //var_dump($sql);
@@ -233,130 +237,29 @@
                         while($rsConsulta = mysqli_fetch_array($select)){
                     ?>
                     <div class="caixa_promocoes_produto">
-                        <div class="caixa_promocoes_seg_imagem">
-                            <div class="caixa_promocoes_imagem">
-                                <img src="<?php echo($rsConsulta['foto'])?>">
+                        <a href="promocoes.php?id=<?php echo($rsConsulta['idProduto'])?>" class="verPromocao">
+                            <div class="caixa_promocoes_seg_imagem">
+                                <div class="caixa_promocoes_imagem">
+                                    <img src="<?php echo($rsConsulta['foto'])?>">
+                                </div>
+
                             </div>
-                        </div>
+                        </a>
                         
                      
 
-                        <div class="caixa_promocao_detalhes">
-                            <a href="promocoes.php?id=<?php echo($rsConsulta['idProduto'])?>" class="verPromocao">
-                                <p>Ver promoção</p>
-                            </a>
-                        </div>                        
+
                     </div>
                     
                     <?php
                         }
                     ?>
                     
-<!--
-                    <div class="caixa_promocoes_produto" style="margin-right: 0px;">
-                        <div class="caixa_promocoes_seg_imagem">
-                            <div class="caixa_promocoes_imagem">
-                            
-                            </div>
-                        </div>
-                        
 
-                        <div class="caixa_promocao_detalhes">
-                            <p>Ver promoção</p>
-                        </div>                   
-                    </div>
--->
+
                 </div>
                 
-<!--
-                <div class="caixa_promocoes_section2">
-                    <div class="caixa_promocoes_produto">
-                        <div class="caixa_promocoes_seg_imagem">
-                            <div class="caixa_promocoes_imagem">
-                            
-                            </div>
-                        </div>
 
-
-                        <div class="caixa_promocao_detalhes">
-                            <p>Ver promoção</p>
-                        </div>                    
-                    </div>
-                    
-                    <div class="caixa_promocoes_produto">
-                        <div class="caixa_promocoes_seg_imagem">
-                            <div class="caixa_promocoes_imagem">
-                                <img src="imagens/capaRevista.webp"/>
-                            </div>
-                        </div>
-                        
-
-
-                        <div class="caixa_promocao_detalhes">
-                            <p>Ver promoção</p>
-                        </div>                     
-                    </div>
-                    
-                    <div class="caixa_promocoes_produto" style="margin-right: 0px;">
-                        <div class="caixa_promocoes_seg_imagem">
-                            <div class="caixa_promocoes_imagem">
-                            
-                            </div>
-                        </div>
-                        
-
-
-                        <div class="caixa_promocao_detalhes">
-                            <p>Ver promoção</p>
-                        </div>                     
-                    </div>
-                </div>
-                
--->
-<!--
-                <div class="caixa_promocoes_section3">
-                    <div class="caixa_promocoes_produto">
-                        <div class="caixa_promocoes_seg_imagem">
-                            <div class="caixa_promocoes_imagem">
-                            
-                            </div>
-                        </div>
-                        
-
-
-                        <div class="caixa_promocao_detalhes">
-                            <p>Ver promoção</p>
-                        </div>                      
-                    </div>
-                    
-                    <div class="caixa_promocoes_produto">
-                        <div class="caixa_promocoes_seg_imagem">
-                            <div class="caixa_promocoes_imagem">
-                            
-                            </div>
-                        </div>
-                        
-
-
-                        <div class="caixa_promocao_detalhes">
-                            <p>Ver promoção</p>
-                        </div>                     
-                    </div>
-                    
-                    <div class="caixa_promocoes_produto" style="margin-right: 0px;">
-                        <div class="caixa_promocoes_seg_imagem">
-                            <div class="caixa_promocoes_imagem">
-                            
-                            </div>
-                        </div>
-
-
-                        <div class="caixa_promocao_detalhes">
-                            <p>Detalhes</p>
-                        </div>                     
-                    </div>
-                </div>
--->
             </div>
             
             

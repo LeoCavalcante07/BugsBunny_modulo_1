@@ -95,15 +95,20 @@
                   
                     </div>
                     
-                    <div class="caixa_menu_adm">
-                        <div class="caixa_menu_adm_img">
-                            <img src="imagens/admProduct.png">
+                    
+                    <a href="admProduto.php">
+                        <div class="caixa_menu_adm">
+
+                            <div class="caixa_menu_adm_img">
+                                <img src="imagens/admProduct.png">
+                            </div>
+
+                            <div class="caixa_menu_adm_titulo">
+                                <p>Produtos</p>
+                            </div>                    
                         </div>
-                        
-                        <div class="caixa_menu_adm_titulo">
-                            <p>Produtos</p>
-                        </div>                    
-                    </div>
+                    </a>                    
+
                     
                     <div class="caixa_menu_adm">
                         <a href="admControleUsuario.php">

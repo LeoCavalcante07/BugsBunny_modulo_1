@@ -520,7 +520,71 @@ a{
 
 
 
-/*IM ADM BANCAS*/
+/*FIM ADM BANCAS*/
+
+
+/*ADM PRODUTOS*/
+
+.seg_produtos{
+    height: auto;
+    min-height: 360px;
+    overflow: hidden;
+    width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 100px;
+}
+
+.caixa_seg_produto{
+    height: 450px;
+    width: 300px;
+    margin-right: 70px;
+    padding-left: 10px;
+/*    border: solid 1px black; */
+    margin-bottom: 70px;
+    float: left;    
+}
+
+.caixa_seg_produto img{
+    height: 400px;
+    width: 300px;    
+}
+
+
+/*FIM ADM PRODUTOS*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*ADM PROMOÇÕES*/
+
+.seg_form_promocoes{
+    width: 400px;
+    height: 500px;
+    border: solid 1px black;
+    margin-right: auto;
+    margin-left: auto;    
+    
+    
+}
+
+
+
+
+
+
+
+/*FIM PROMOÇÕES*/
+
 
 
 
