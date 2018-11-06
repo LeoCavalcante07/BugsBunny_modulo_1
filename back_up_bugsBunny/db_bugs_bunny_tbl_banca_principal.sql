@@ -37,7 +37,7 @@ CREATE TABLE `tbl_banca_principal` (
 
 LOCK TABLES `tbl_banca_principal` WRITE;
 /*!40000 ALTER TABLE `tbl_banca_principal` DISABLE KEYS */;
-INSERT INTO `tbl_banca_principal` VALUES (5,'arquivos/dda60526b5500bb8971160912ccb0937.jpg','     ewtfqaw\r\nrewq\r\ntreq\r\ng\r\nreq\r\ng\r\nreqg\r\nre\r\n                                       ',1);
+INSERT INTO `tbl_banca_principal` VALUES (5,'arquivos/dda60526b5500bb8971160912ccb0937.jpg','                             Pousou em meio às rochas. Suas asas se fecharam, seu corpo começava a se esfriar. O peso dos anos fazia suas penas se esfarelarem e sua chama amiudar. Percebeu que era a hora da partida. Olhou para o céu estrelado, morrer era uma das leis da natureza, mas nem por isso era algo bom. Guinchou fracamente, seu fogo apagou, seu corpo caiu no chão e se transformou em cinzas negras.\r\ng\r\nreq\r\ng\r\nreqg\r\nre\r\n                                                           ',1);
 /*!40000 ALTER TABLE `tbl_banca_principal` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -50,4 +50,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-11-04 23:14:50
+-- Dump completed on 2018-11-05 22:47:59

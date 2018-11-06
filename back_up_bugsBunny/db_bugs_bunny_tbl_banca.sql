@@ -38,7 +38,7 @@ CREATE TABLE `tbl_banca` (
 
 LOCK TABLES `tbl_banca` WRITE;
 /*!40000 ALTER TABLE `tbl_banca` DISABLE KEYS */;
-INSERT INTO `tbl_banca` VALUES (4,'teste','arquivos/ecf107c6a8d3f502bafef087a8956794.jpeg','          zgsdfgfdsgs                                  ',1),(5,'haha','arquivos/1472a938e8edb66385278902b8fc3e6a.jpg','fadsfdsafdsafad                                            ',1),(6,'hehehe','arquivos/bde044b717074dd37c583af15dc477c5.jpg','sjfdkshfkhkjdshfkjdasnjfflk\r\ndsa\r\ngfdsag\r\nsag\r\ndsgsdfgds\r\nfgds\r\ngsd                                            ',1),(7,'reeeee','arquivos/d96ebb9519d7a3b2db000ff02a0a78a1.jpg','             agargareg                               ',1),(8,'argragareg','arquivos/eda2ff8d0b7a2cf7338eee4f0ff0d72f.jpg','               argaregaesgraegareg                             ',1);
+INSERT INTO `tbl_banca` VALUES (4,'teste','arquivos/ecf107c6a8d3f502bafef087a8956794.jpeg','Pousou em meio às rochas. Suas asas se fecharam, seu corpo começava a se esfriar. O peso dos anos fazia suas penas se esfarelarem e sua chama amiudar. Percebeu que era a hora da partida. Olhou                                                   ',1),(5,'haha','arquivos/1472a938e8edb66385278902b8fc3e6a.jpg','Pousou em meio às rochas. Suas asas se fecharam, seu corpo começava a se esfriar. O peso dos anos fazia suas penas se esfarelarem e sua chama amiudar. Percebeu que era a hora da partida. Olhou                                                              ',1),(6,'hehehe','arquivos/bde044b717074dd37c583af15dc477c5.jpg','Pousou em meio às rochas. Suas asas se fecharam, seu corpo começava a se esfriar. O peso dos anos fazia suas penas se esfarelarem e sua chama amiudar. Percebeu que era a hora da partida. Olhou \r\ngfdsag\r\nsag\r\ndsgsdfgds\r\nfgds\r\ngsd                                                                ',1),(8,'argragareg','arquivos/eda2ff8d0b7a2cf7338eee4f0ff0d72f.jpg','idBancaPousou em meio às rochas. Suas asas se fecharam, seu corpo começava a se esfriar. O peso dos anos fazia suas penas se esfarelarem e sua chama amiudar. Percebeu que era a hora da partida. Olhou para o céu estrelado, morrer era uma das leis da natureza, mas nem por isso era algo bom. Guinchou fracamente, seu fogo apagou, seu corpo caiu no chão e se transformou em cinzas negras.',1);
 /*!40000 ALTER TABLE `tbl_banca` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -51,4 +51,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-11-04 23:14:49
+-- Dump completed on 2018-11-05 22:47:58

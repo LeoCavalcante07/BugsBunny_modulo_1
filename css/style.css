@@ -133,20 +133,22 @@ div{
 .caixa_seg_login_label{
     height: 50%;
     width: 80%;
-    float: left;    
+    float: left;  
+    
 }
 
 .caixa_login_label{
     height: 100%;
     width: 40%;    
     float: left;    
+    
 }
 
 .caixa_seg_login_text{
     height: 40%;
     width: 80%;  
     margin-top: 10px;
-    float: left;    
+    float: left;   
 }
 
 .caixa_login_text{

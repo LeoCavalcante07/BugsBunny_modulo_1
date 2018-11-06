@@ -116,10 +116,11 @@
                             </div>                            
                         </div>
                         
-                        <div class="caixa_botao">
-                            <input type="submit" name="btnEntrar"  class="btnEntrar" value="Entrar">    
-                        </div>
-                      
+                        <a href="CMS/index.php">
+                            <div class="caixa_botao">
+                                <input type="submit" name="btnEntrar"  class="btnEntrar" value="Entrar">    
+                            </div>
+                      </a>
                     </div>   
                     
                 </div>

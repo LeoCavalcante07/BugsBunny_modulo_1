@@ -104,16 +104,22 @@
 
     if(isset($_GET['mudar'])){
         
+        
         $id = $_GET['id'];
         
         if($_GET['mudar'] == 0){
-            $sql = "update tbl_usuarios status = 1 where id = ".$id;
+            
+            $sql = "update tbl_usuarios set status = 1 where id = ".$id;
+                        
             
             $x = 1;
         }else{
+            
             $sql = "update tbl_usuarios set status = 0 where id = ".$id;
             
         }
+        
+        var_dump($sql);
         
         
         mysqli_query($conexao, $sql);

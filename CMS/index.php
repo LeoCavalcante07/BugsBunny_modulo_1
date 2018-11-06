@@ -1,3 +1,42 @@
+<?php
+
+    session_start();
+
+    $host = "localhost";
+    $user = "root";
+    $password = "bcd127";
+    $banco = "db_bugs_bunny";
+
+    
+    $userLogado = "";
+    
+    $idUser = $_SESSION['idUsuario'];
+    
+
+
+
+    if(!$conexao = mysqli_connect($host, $user, $password, $banco)){
+        echo("<script> alert('Houve um eero na conexão com o banco') </script>");
+    }
+
+    $sql = "select * from tbl_usuarios where id = ".$idUser;
+
+    $select = mysqli_query($conexao, $sql);
+
+    $rsUsuario = mysqli_fetch_array($select);
+
+    $userLogado = $rsUsuario['nome'];
+
+
+    
+
+
+?>
+
+
+
+
+
 <html>
     <head>
         <link rel="stylesheet" href="css/style.css" type="text/css">
@@ -82,7 +121,7 @@
                 
                 <div class="caixa_menu_direita">
                     <div class="caixa_bem_vindo">
-                        <p>Bem Vindo, David!</p>
+                        <p>Bem Vindo, <?php echo($userLogado)?>!</p>
                     </div>
                     <div class="caixa_sair">
                         <a href="../index.php"><div class="caixa_btnSair">Sign Out</div></a>

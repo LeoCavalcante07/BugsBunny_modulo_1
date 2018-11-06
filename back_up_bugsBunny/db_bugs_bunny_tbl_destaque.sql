@@ -38,7 +38,7 @@ CREATE TABLE `tbl_destaque` (
 
 LOCK TABLES `tbl_destaque` WRITE;
 /*!40000 ALTER TABLE `tbl_destaque` DISABLE KEYS */;
-INSERT INTO `tbl_destaque` VALUES (4,'aaa','WJDLKJEWAFDLKEWAJFLKJEWA\r\nEAFKJHEKWHFKJHEWKJFEW\r\nEWJHFKJEWHKFHEWKDNMWD\r\nSDMSAND,NEWD\r\nWDWDW                                     ','arquivos/2acf4114d9de48c4420eade4a7150777.jpg',1),(5,'tttt','                  “Onde estou?” e “como vim parar aqui?” foram as primeiras perguntas que surgiram na mente confusa daquele jovem de aparentemente vinte anos. Era branco, com cabelos negros e olhos castanhos, vestia uma camisa branca e um short                           ','arquivos/b9658a849232cc6db833db6e71a18785.jpg',1);
+INSERT INTO `tbl_destaque` VALUES (4,'aaa','Pousou em meio às rochas. Suas asas se fecharam, seu corpo começava a se esfriar. O peso dos anos fazia suas penas se esfarelarem e sua chama amiudar. Percebeu que era a hora da partida. Olhou para o céu estrelado, morrer era uma das leis da natureza, mas nem por isso era algo bom. Guinchou fracamente, seu fogo apagou, seu corpo caiu no chão e se transformou em cinzas negras.','arquivos/2acf4114d9de48c4420eade4a7150777.jpg',1),(5,'tttt','                  “Onde estou?” e “como vim parar aqui?” foram as primeiras perguntas que surgiram na mente confusa daquele jovem de aparentemente vinte anos. Era branco, com cabelos negros e olhos castanhos, vestia uma camisa branca e um short                           ','arquivos/b9658a849232cc6db833db6e71a18785.jpg',1);
 /*!40000 ALTER TABLE `tbl_destaque` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -51,4 +51,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-11-04 23:14:49
+-- Dump completed on 2018-11-05 22:47:59

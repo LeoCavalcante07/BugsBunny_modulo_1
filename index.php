@@ -1,3 +1,54 @@
+<?php
+
+    session_start();
+
+    $host = "localhost";
+    $user = "root";
+    $password = "bcd127";
+    $banco = "db_bugs_bunny";
+
+    $noUser = "";
+
+
+
+    if(!$conexao = mysqli_connect($host, $user, $password, $banco)){
+        echo("<script> alert('Houve um eero na conexão com o banco') </script>");
+    }
+
+
+    if(isset($_POST['btnEntrar'])){
+        
+        $txtUsuario = $_POST['txtUsuario'];
+        $txtSenha = $_POST['txtSenha'];
+        
+        $sql = "select * from tbl_usuarios where status = 1 and email = '".$txtUsuario."' and senha = '".$txtSenha."'";
+        
+        //var_dump($sql);
+        
+        $select = mysqli_query($conexao, $sql);
+        
+        $rsConsulta = mysqli_fetch_array($select);
+        
+        if(@count($rsConsulta) > 0){
+            $_SESSION['idUsuario'] = $rsConsulta['id'];
+            
+            header("location:CMS/index.php");
+        }else{
+            //echo("<script> alert('Usuário ou senha incorreta') </script>");
+            $noUser  = "Usuário ou senha incorreto";
+        }
+    }
+
+
+    
+
+
+
+?>
+
+
+
+
 <!doctype html>
 
 <html>
@@ -80,31 +131,39 @@
                     </div>
 
                     <div id="caixa_login">
-                        <div class="caixa_seg_login_label">
-                            <div class="caixa_login_label" style="margin-right: 30px;">
-                                <p>Usuário:</p>
+                        <form action="index.php" method="post">
+                            <div class="caixa_seg_login_label">
+                                <div class="caixa_login_label" style="margin-right: 30px;">
+                                    <p>Usuário:</p>
+                                </div>
+
+                                <div class="caixa_login_label">
+                                    <p>Senha:</p>
+                                </div>                          
                             </div>
 
-                            <div class="caixa_login_label">
-                                <p>Senha:</p>
-                            </div>                          
-                        </div>
-                        
-                        <div class="caixa_seg_login_text">
-                            <div class="caixa_login_text">
-                                <input type="text" name="txtUsuario">                                
+                            <div class="caixa_seg_login_text">
+                                <div class="caixa_login_text">
+                                    <input type="text" name="txtUsuario">                                
+                                </div>
+
+                                <div class="caixa_login_text">
+                                    <input type="password" name="txtSenha">                           
+                                </div>   
+                                
+                                <p style="color: red; margin-top: 5px;"><?php echo($noUser)?></p>
+                                
+                                
                             </div>
+
                             
-                            <div class="caixa_login_text">
-                                <input type="password" name="txtSenha">                           
-                            </div>                            
-                        </div>
-                        
-                        <a href="CMS/index.php">
-                            <div class="caixa_botao">
-                                <input type="submit" name="btnEntrar"  class="btnEntrar" value="Entrar">    
-                            </div>
-                      </a>
+                            <a href="CMS/index.php">
+                                <div class="caixa_botao">
+                                    <input type="submit" name="btnEntrar"  class="btnEntrar" value="Entrar">    
+                                </div>
+                          </a>                        
+                        </form>
+
                     </div>   
                     
                 </div>
