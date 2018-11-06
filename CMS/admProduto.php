@@ -5,6 +5,8 @@
     $password = "bcd127";
     $banco = "db_bugs_bunny";
 
+    session_start();
+
 
     if(!$conexao = mysqli_connect($host, $user, $password, $banco)){
         echo('Houve um erro na conexão com o banco');
@@ -140,7 +142,9 @@
                 <a>
                 <div class="caixa_seg_produto">
                     <img src="../<?php echo($rsConsulta['foto'])?>">
-                    <a href="admPromocoes.php?id=<?php echo($rsConsulta['idProduto'])?>">Adicionar Promoção</a>
+                    
+                    
+                    <a href="auxiliar.php?idProduto=<?php echo($rsConsulta['idProduto'])?>">Adicionar Promoção</a>
                 </div>                
                 </a>
 
