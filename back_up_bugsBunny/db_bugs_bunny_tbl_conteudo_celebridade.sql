@@ -16,29 +16,33 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `tbl_niveis`
+-- Table structure for table `tbl_conteudo_celebridade`
 --
 
-DROP TABLE IF EXISTS `tbl_niveis`;
+DROP TABLE IF EXISTS `tbl_conteudo_celebridade`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
-CREATE TABLE `tbl_niveis` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `nome` varchar(45) NOT NULL,
-  `descricao` text NOT NULL,
+CREATE TABLE `tbl_conteudo_celebridade` (
+  `idConteudoCelebridade` int(11) NOT NULL AUTO_INCREMENT,
+  `titulo` varchar(45) NOT NULL,
+  `texto` text NOT NULL,
+  `foto` varchar(100) NOT NULL,
+  `banner` varchar(100) NOT NULL,
+  `idCelebridade` int(11) NOT NULL,
   `status` tinyint(4) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8;
+  PRIMARY KEY (`idConteudoCelebridade`),
+  KEY `idCelebridade_idx` (`idCelebridade`),
+  CONSTRAINT `idCelebridade` FOREIGN KEY (`idCelebridade`) REFERENCES `tbl_celebridade` (`idcelebridade`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `tbl_niveis`
+-- Dumping data for table `tbl_conteudo_celebridade`
 --
 
-LOCK TABLES `tbl_niveis` WRITE;
-/*!40000 ALTER TABLE `tbl_niveis` DISABLE KEYS */;
-INSERT INTO `tbl_niveis` VALUES (27,'Administrador','                                faz tudinho                                                                         ',0),(29,'Cataloguista','atualiza as paginas                                             ',0);
-/*!40000 ALTER TABLE `tbl_niveis` ENABLE KEYS */;
+LOCK TABLES `tbl_conteudo_celebridade` WRITE;
+/*!40000 ALTER TABLE `tbl_conteudo_celebridade` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tbl_conteudo_celebridade` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -50,4 +54,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-11-07 16:56:05
+-- Dump completed on 2018-11-07 16:56:08

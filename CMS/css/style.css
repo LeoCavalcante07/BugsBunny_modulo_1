@@ -420,12 +420,20 @@ a{
 
 
 .seg_destaque_form{
-    width: 400px;
-    height: 500px;
+    width: 900px;
+    height: 700px;
     border: solid 1px black;
     margin-right: auto;
     margin-left: auto;   
     
+}
+
+
+.seg_content{
+    width: 400px;
+    height: 300px;
+    float: left;
+    background-color: red;
 }
 
 
@@ -435,6 +443,7 @@ a{
     height: 200px;
     border: solid 1px black;
     margin-bottom: 10px;
+    float: left;
     
 }
 

@@ -184,14 +184,17 @@
             
             
             <div class="caixa_seg_segunda_sessao">
-                <div class="caixa_opt_destaques">
-                    <div class="caixa_opt_destaques_img">
-                        <img src="imagens/celebridade.png">
-                    </div>
-                    <div class="caixa_opt_destaques_text">
-                        <p>Celebridade</p>
-                    </div>
-                </div>   
+                <a href="admCelebridades.php">
+                    <div class="caixa_opt_destaques">
+                        <div class="caixa_opt_destaques_img">
+                            <img src="imagens/celebridade.png">
+                        </div>
+                        <div class="caixa_opt_destaques_text">
+                            <p>Celebridade</p>
+                        </div>
+                    </div>                  
+                </a>
+ 
                 
                 
                 
