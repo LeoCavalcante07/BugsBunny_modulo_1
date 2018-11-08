@@ -1,3 +1,23 @@
+<?php
+
+    session_start();
+
+    $host = "localhost";
+    $user = "root";
+    $password = "bcd127";
+    $banco = "db_bugs_bunny";
+  
+    if(!$conexao = mysqli_connect($host, $user, $password, $banco)){
+        echo('Houve um erro na conexão com o banco');
+    }
+
+
+
+?>
+
+
+
+
 <!doctype html>
 
 <html>
@@ -120,30 +140,73 @@
             <div id="caixa_especial"></div>
             
             <div class="caixa_principal_celebridade">
+                
+                <?php 
+                    $sql = "select cc.banner, c.nomeCelebridade from tbl_conteudo_celebridade as cc, tbl_celebridade as c where cc.idCelebridade = c.idCelebridade and c.status = 1 order by rand() limit 0,1";
+                
+                    var_dump($sql);
+                    $select = mysqli_query($conexao, $sql);
+                
+                    $rsConsulta = mysqli_fetch_array($select);
+                
+                
+                ?>
                 <div class="caixa_seg_celebridade_sec1">
                     <div class="caixa_celebridade_titulo">
-                        <h1>A celebridade do mês é o galã Lula!</h1>
+                        <h1>A celebridade do mês é o galã <?php echo($rsConsulta['nomeCelebridade'])?>!</h1>
                     </div>
-
+                    
                     <div class="caixa_celebridade_mainImg">
-
-                    </div>
-
-               
+                        <img src="CMS/<?php echo($rsConsulta['banner'])?>">
+                    </div>                    
+                    
+                <?php
+                    $sql = "select * from tbl_conteudo_celebridade where status = 1";
+                
+                    $select = mysqli_query($conexao, $sql);
+                    $i = 0;
+                    while($rsConsulta = mysqli_fetch_array($select)){
+                
+                ?>                       
                 </div>
+                
+                <?php
+                    if($i % 2 == 0){                    
+                ?>
                 
                 <div class="caixa_seg_celebridade_sec">
                     <div class="caixa_celebridade_texto_motivo">
-                        <h2>Motivo</h2>
-                        <p>Pousou em meio às rochas. Suas asas se fecharam, seu corpo começava a se esfriar. O peso dos anos fazia suas penas se esfarelarem e sua chama amiudar. Percebeu que era a hora da partida. Olhou para o céu estrelado,</p>
+                        <h2><?php echo($rsConsulta['titulo'])?></h2>
+                        <p><?php echo($rsConsulta['texto'])?></p>
                     </div>                 
                     <div class="caixa_celebridade_img_motivo">
-
+                        <img src="CMS/<?php echo($rsConsulta['foto'])?>">
                     </div>                    
                 </div>
+                
+                
+                <?php
+                    }else{
+                ?>
+                
+                    <div class="caixa_celebridade_img_infancia">
+                        <img src="CMS/<?php echo($rsConsulta['foto'])?>">
+                    </div>   
+                    
+                    <div class="caixa_celebridade_texto_infancia">
+                        <h2><?php echo($rsConsulta['titulo'])?></h2>
+                        <p><?php echo($rsConsulta['texto'])?></p>
+                    </div>                     
+                
+                <?php
+                        }
+                        $i++;
+                    }
+                ?>
 
                 
 
+<!--
                 <div class="caixa_seg_celebridade_sec">
                      
                     
@@ -158,6 +221,7 @@
           
           
                 </div>
+-->
                 
 
                 

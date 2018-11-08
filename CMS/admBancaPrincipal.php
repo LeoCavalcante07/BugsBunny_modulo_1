@@ -18,7 +18,7 @@
     $iconeAtivacao = "imagens/ativado.png";
 
     if(!$conexao = mysqli_connect($host, $user, $password, $banco)){
-        echo('deu ruim');
+        echo('Houve um erro na conexão com o banco');
     }
 
 

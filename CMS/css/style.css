@@ -420,8 +420,8 @@ a{
 
 
 .seg_destaque_form{
-    width: 900px;
-    height: 700px;
+    width: 400px;
+    height: 500px;
     border: solid 1px black;
     margin-right: auto;
     margin-left: auto;   
@@ -429,12 +429,6 @@ a{
 }
 
 
-.seg_content{
-    width: 400px;
-    height: 300px;
-    float: left;
-    background-color: red;
-}
 
 
 
@@ -443,11 +437,27 @@ a{
     height: 200px;
     border: solid 1px black;
     margin-bottom: 10px;
-    float: left;
+/*    float: left;*/
     
 }
 
 #visualizarFoto img{
+    width: 390px;
+    height: 180px;
+}
+
+
+
+#visualizarBanner{
+    width: 400px;
+    height: 200px;
+    border: solid 1px black;
+    margin-bottom: 10px;
+/*    float: left;*/
+    
+}
+
+#visualizarBanner img{
     width: 390px;
     height: 180px;
 }
@@ -593,6 +603,33 @@ a{
 
 
 /*FIM PROMOÇÕES*/
+
+
+
+
+/*ADM CONTEUDO CELEBRIDADE*/
+
+
+.seg_content{
+    width: 400px;
+    height: 300px;
+    float: left;
+    
+}
+
+
+.seg_conteudo_celebridade_form{
+    width: 850px;
+    height: 700px;
+    border: solid 1px black;
+    margin-right: auto;
+    margin-left: auto;   
+    
+}
+
+
+
+/*FIM ADM CONTEUDO CELEBRIDADE*/
 
 
 

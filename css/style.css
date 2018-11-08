@@ -454,9 +454,12 @@ div{
 
 /*       CELEBRIDADE        */
 .caixa_principal_celebridade{
-    height: 1600px;
+    height: auto;
+    min-height: 1000px;
+    
+    overflow: hidden;
     width: 1410px;
-    border: solid 1px white;
+    
     float: left;    
 }
 
@@ -494,9 +497,13 @@ div{
     height: 300px;    
     margin-left: auto;
     margin-right: auto;
-    background-image: url(../imagens/lula.jpg);
     background-size: cover;
     background-repeat: no-repeat;
+}
+
+.caixa_celebridade_mainImg img{
+    width: 1000px;
+    height: 300px;      
 }
 
 
@@ -529,13 +536,18 @@ div{
 .caixa_celebridade_img_motivo{
     width: 600px;
     height: 300px;
-    background-color: red;
-    background-image: url(../imagens/lulamotivo.jpeg);
+    
     background-size: cover;
     background-repeat: no-repeat; 
     margin-top: 30px;
     margin-left: 50px;
+    margin-bottom: 100px;
     float: left;
+}
+
+.caixa_celebridade_img_motivo img{
+    width: 600px;
+    height: 300px;    
 }
 
 
@@ -571,6 +583,7 @@ div{
     color: white;
     margin-left: 150px;
     margin-top: 50px;
+    margin-bottom: 200px;
     float: left;
     font-size: 25px;
 }

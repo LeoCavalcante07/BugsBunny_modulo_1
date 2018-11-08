@@ -26,8 +26,9 @@ CREATE TABLE `tbl_celebridade` (
   `idCelebridade` int(11) NOT NULL AUTO_INCREMENT,
   `nomeCelebridade` varchar(45) NOT NULL,
   `foto` varchar(100) NOT NULL,
+  `status` tinyint(4) NOT NULL DEFAULT '0',
   PRIMARY KEY (`idCelebridade`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -36,7 +37,7 @@ CREATE TABLE `tbl_celebridade` (
 
 LOCK TABLES `tbl_celebridade` WRITE;
 /*!40000 ALTER TABLE `tbl_celebridade` DISABLE KEYS */;
-INSERT INTO `tbl_celebridade` VALUES (1,'lula','arquivos/b2951376d35fd3d500b3a3f6dbecb6c3.jpg');
+INSERT INTO `tbl_celebridade` VALUES (1,'lula','arquivos/b2951376d35fd3d500b3a3f6dbecb6c3.jpg',1),(3,'ney','arquivos/fc92a5cb4aee7a0d09dae20bce9e2439.jpg',0);
 /*!40000 ALTER TABLE `tbl_celebridade` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -49,4 +50,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-11-07 16:56:06
+-- Dump completed on 2018-11-08  0:48:21

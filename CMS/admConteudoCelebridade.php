@@ -12,7 +12,15 @@
     $titulo = "";
     $texto = "";
     $imagem = "";
+    $banner = "";
     $nomeImagem  = "";
+    $nomeBanner  = "";
+
+    $idCelebridade = "";
+
+    if(isset($_GET['id'])){
+        $_SESSION['idCelebridade'] = $_GET['id'];
+    }
 
     
     $iconeAtivacao = "imagens/ativado.png";
@@ -29,16 +37,18 @@
             $titulo = $_POST['txtTitulo']; 
             $nomeFoto = $_POST['txtNomeFoto'];
             $texto = $_POST['txtTexto'];  
+            $nomeBanner = $_POST['txtNomeBanner']; 
+            $idCelebridade = $_SESSION['idCelebridade'];
             
             if($_POST['btnSalvar'] == "Salvar"){
-               $sql = "insert into tbl_celebridade(titulo, foto, texto, banner) values('".$titulo."', '".$nomeFoto."', '".$texto."')"; 
+               $sql = "insert into tbl_conteudo_celebridade(titulo, foto, texto, banner, idCelebridade) values('".$titulo."', '".$nomeFoto."', '".$texto."', '".$nomeBanner."', '".$idCelebridade."')"; 
             }else if($_POST['btnSalvar'] == "Editar"){
                 $sql = "update tbl_destaque set titulo = '".$titulo."', foto = '".$nomeFoto."', texto = '".$texto."' where idDestaque = ".$_SESSION['id'];
             }
             
             if(mysqli_query($conexao, $sql)){
                 echo("imagem uppada com success");  
-                header("location:admDestaque.php"); 
+                header("location:admConteudoCelebridade.php"); 
             }
                 
             
@@ -57,11 +67,11 @@
         $_SESSION['id'] = $id;
         
         if($modo == "excluir"){
-            $sql = "delete from tbl_destaque where idDestaque =".$id;
-            
+            $sql = "delete from tbl_conteudo_celebridade where idCelebridade =".$id;
+            var_dump($sql);
             if(mysqli_query($conexao, $sql)){
                 echo("<script>alert('Noticia excluida com sucesso')</script>");
-                header("location:admDestaque.php");
+                header("location:admConteudoCelebridade.php");
             }
             
         }else if($modo == "buscar"){
@@ -76,7 +86,10 @@
             $texto = $rsDestaque['texto'];
             $titulo = $rsDestaque['titulo'];
             $nomeImagem = $rsDestaque['foto'];
+            $nomeBanner = $rsDestaque['banner'];
+                
             $imagem = "<img src='".$nomeImagem."'>";
+            $banner = "<img src='".$nomeBanner."'>";
                                                
         }
     }
@@ -136,18 +149,25 @@
                });
                 
                 
+                
+                
+               $('#fleBanner').live('change', function(){
+                  
+                   
+                    $('#frmBanner').ajaxForm({                        
+                        target:'#visualizarBanner'
+
+                    }).submit();                    
+                   
+               });                
+                
 //                $('#btnSalvar').click(function(){
 //                   frmCadastro.submit();
 //                });
                 
 
                 
-                ////CÓDIGO MODAL em construção/////
 
-                    $(".visualizara").click(function(){
-
-                        $(".container").fadeIn(500);
-                    });
 
                 
                 
@@ -265,26 +285,31 @@
 <!-- ----------------------------- Fim Menu      -->
             
             
-            <div class="seg_destaque_form">
+            <div class="seg_conteudo_celebridade_form">
                 
-                <div class="seg_content">
-                    <div id="visualizarFoto" onclick="escolherFoto()">                      
+<!--                FOTO-->
+                <div class="seg_content" style="margin-right: 50px;">
+                    <div id="visualizarFoto" onclick="escolherFoto()">                          <h1>Foto</h1>
                         <?php echo($imagem)?>
                     </div>
-                    <form id="frmFoto" action="" method="post" enctype="multipart/form-data">
+                    <form id="frmFoto" action="upload.php" method="post" enctype="multipart/form-data">
                         <input type="file" id="fleFoto" name="fleFoto">
 
                     </form>                
                 </div>
                 
+                
+                
+<!--                BANNER-->
                 <div class="seg_content">
                 
-                    <div id="visualizarFoto" onclick="escolherFoto()">                    
-                        <?php echo($imagem)?>
+                    <div id="visualizarBanner" onclick="escolherFoto()"> 
+                        <h1>Banner</h1>
+                        <?php echo($banner)?>
                     </div>                
 
-                    <form id="frmBanner" action="" method="post" enctype="multipart/form-data">
-                        <input type="file" id="fleFoto" name="fleFoto">
+                    <form id="frmBanner" action="uploadBanner.php" method="post" enctype="multipart/form-data">
+                        <input type="file" id="fleBanner" name="fleBanner">
 
                     </form>                       
                     
@@ -296,6 +321,9 @@
                 <form id="frmCadastro" action="" method="post" enctype="multipart/form-data">
 <!--                    Nome foto             -->
                     <input type="text" name="txtNomeFoto" style="display: none;" value="<?php echo($nomeImagem)?>">
+                    
+                    <input type="text" name="txtNomeBanner" style="display: none;" value="<?php echo($nomeBanner)?>">
+                    
                     <br><br>
                     Titulo: <input type="text" name="txtTitulo" value="<?php echo($titulo)?>">
                     <br><br>
@@ -327,10 +355,10 @@
             
             
         <div class="seg_table_sobre">
-            <table width="500px" height="300px" border="1px">
+            <table width="300px" height="300px" border="1px">
                 
                 <?php
-                    $sql = "select * from tbl_destaque";
+                    $sql = "select * from tbl_conteudo_celebridade";
                     $select = mysqli_query($conexao, $sql);
                     
                     $i = 0; // variavel que sera concatenada com o id de cada objeto FILE para diferencia-los
@@ -362,28 +390,37 @@
                     <tr height="200px">
                         <td class="tdImagem">
     <!--                        imagem-->
-                            <img id="imagem<?php echo($i)?>" src="<?php echo($rsDestaque['foto'])?>">
+                            <img src="<?php echo($rsDestaque['foto'])?>">
                             
-                        </td>
-
+                        </td>                  
+                    </tr>
+                
+                
+                    <tr>
                         <td>
+                            <img src="<?php echo($rsDestaque['banner'])?>">
+
+                        </td>                          
+                    </tr>
+                
+                    <tr>
+                        <td colspan="2">
                             <textarea name="txtTexto" disabled style="height: 290px; width:200px; resize: none; background-color: white; font-size:14px;">
                                 <?php echo($rsDestaque['texto'])?>
-                            </textarea>
-
-                        </td>                    
+                            </textarea>                            
+                        </td>
                     </tr>
                     <tr height="50px" align="center">
                         <td colspan="2" >
-                            <a href="admDestaque.php?id=<?php echo($rsDestaque['idDestaque'])?>&modo=excluir">                                
+                            <a href="admConteudoCelebridade.php?id=<?php echo($rsDestaque['idCelebridade'])?>&modo=excluir">                                
                                 <img src="imagens/delete.png">
                             </a>
                             
-                            <a href="admDestaque.php?id=<?php echo($rsDestaque['idDestaque'])?>&modo=buscar">
+                            <a href="admConteudoCelebridade.php?id=<?php echo($rsDestaque['idCelebridade'])?>&modo=buscar">
                                 <img src="imagens/edit.png">
                             </a>
                             
-                            <a href="admDestaque.php?id=<?php echo($rsDestaque['idDestaque'])?>&atualizarStatus=<?php echo($status)?>">
+                            <a href="admConteudoCelebridade.php?id=<?php echo($rsDestaque['idCelebridade'])?>&atualizarStatus=<?php echo($status)?>">
                                 <img src="<?php echo($iconeAtivacao)?>">
                             </a>
                             

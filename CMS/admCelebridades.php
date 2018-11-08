@@ -32,14 +32,15 @@
             
             if($_POST['btnSalvar'] == "Salvar"){
                $sql = "insert into tbl_celebridade(nomeCelebridade, foto) values('".$titulo."', '".$nomeFoto."')"; 
-                var_dump($sql);
+                
             }else if($_POST['btnSalvar'] == "Editar"){
-                $sql = "update tbl_destaque set titulo = '".$titulo."', foto = '".$nomeFoto."', texto = '".$texto."' where idDestaque = ".$_SESSION['id'];
+                $sql = "update tbl_celebridade set nomeCelebridade = '".$titulo."', foto = '".$nomeFoto."' where idCelebridade = ".$_SESSION['id'];
             }
+            var_dump($sql);
             
             if(mysqli_query($conexao, $sql)){
-                echo("imagem uppada com success");  
-                header("location:admDestaque.php"); 
+                //echo("imagem uppada com success");  
+                header("location:admCelebridades.php"); 
             }
                 
             
@@ -58,24 +59,24 @@
         $_SESSION['id'] = $id;
         
         if($modo == "excluir"){
-            $sql = "delete from tbl_destaque where idDestaque =".$id;
+            $sql = "delete from tbl_celebridade where idCelebridade =".$id;
             
             if(mysqli_query($conexao, $sql)){
                 echo("<script>alert('Noticia excluida com sucesso')</script>");
-                header("location:admDestaque.php");
+                header("location:admCelebridades.php"); 
             }
             
         }else if($modo == "buscar"){
             
             $btnSubmit = "Editar";
             
-            $sql = "select * from tbl_destaque where idDestaque = ".$id;
+            $sql = "select * from tbl_celebridade where idCelebridade = ".$id;
             $select = mysqli_query($conexao, $sql);
             
             $rsDestaque = mysqli_fetch_array($select);
             
-            $texto = $rsDestaque['texto'];
-            $titulo = $rsDestaque['titulo'];
+            //$texto = $rsDestaque['texto'];
+            $titulo = $rsDestaque['nomeCelebridade'];
             $nomeImagem = $rsDestaque['foto'];
             $imagem = "<img src='".$nomeImagem."'>";
                                                
@@ -90,9 +91,15 @@
         $id = $_GET['id'];
         
         if($_GET['atualizarStatus'] == 0){
-            $sql = "update tbl_destaque set status = 1 where idDestaque = ".$id;
+            //para uma celebridade estar ativa, todas as outras devem estar desativadas, então antes de atualizar o status d euma celebridade, todas as outras devem ser atualizadas para desativado
+            $sql = "update tbl_celebridade set status = 0";
+            mysqli_query($conexao, $sql);
+            
+            $sql = "update tbl_celebridade set status = 1 where idCelebridade = ".$id;
         }else{
-            $sql = "update tbl_destaque set status = 0 where idDestaque = ".$id;
+            
+            
+            $sql = "update tbl_celebridade set status = 0 where idCelebridade = ".$id;
         }
         
         
@@ -253,7 +260,7 @@
 <!--                    Nome foto             -->
                     <input type="text" name="txtNomeFoto" style="display: none;" value="<?php echo($nomeImagem)?>">
                     <br><br>
-                    Titulo: <input type="text" name="txtTitulo" value="<?php echo($titulo)?>">
+                    Nome da Celebridade: <input type="text" name="txtTitulo" value="<?php echo($titulo)?>">
                     
                 
                     <br><br>
@@ -290,13 +297,13 @@
                     $i = 0; // variavel que sera concatenada com o id de cada objeto FILE para diferencia-los
                     while($rsDestaque = mysqli_fetch_array($select)){
                         
-                        //$status = $rsDestaque['status'];
-//                        
-//                        if($status == 0){
-//                            $iconeAtivacao = "imagens/desativado.png";
-//                        }else{
-//                            $iconeAtivacao = "imagens/ativado.png";
-//                        }
+                        $status = $rsDestaque['status'];
+                        
+                        if($status == 0){
+                            $iconeAtivacao = "imagens/desativado.png";
+                        }else{
+                            $iconeAtivacao = "imagens/ativado.png";
+                        }
                 ?>
               
                     <tr height="50px">
@@ -342,6 +349,11 @@
                             <a href="admConteudoCelebridade.php?id=<?php echo($rsDestaque['idCelebridade'])?>">
                                 <img src="imagens/add.png">
                             </a>
+                            
+                            
+                            <a href="admCelebridades.php?id=<?php echo($rsDestaque['idCelebridade'])?>&atualizarStatus=<?php echo($status)?>">
+                                <img src="<?php echo($iconeAtivacao)?>">
+                            </a>                            
                             
                             
 
