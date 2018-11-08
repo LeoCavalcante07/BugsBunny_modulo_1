@@ -22,6 +22,20 @@
     }
 
 
+
+    $userLogado = "";
+    
+    $idUser = $_SESSION['idUsuario'];
+
+    $sql = "select * from tbl_usuarios where id = ".$idUser;
+
+    $select = mysqli_query($conexao, $sql);
+
+    $rsUsuario = mysqli_fetch_array($select);
+
+    $userLogado = $rsUsuario['nome'];
+
+
     if(isset($_POST)){
         
         if(isset($_POST['txtNomeFoto'])){
@@ -89,6 +103,9 @@
         $id = $_GET['id'];
         
         if($_GET['atualizarStatus'] == 0){
+            $sql = "update tbl_banca_principal set status = 0";
+            mysqli_query($conexao, $sql);    
+            
             $sql = "update tbl_banca_principal set status = 1 where idBancaPrincipal = ".$id;
         }else{
             $sql = "update tbl_banca_principal set status = 0 where idBancaPrincipal = ".$id;
@@ -223,42 +240,56 @@
                                 <p>Conteúdo</p>
                             </div>                        
                         </a>
+
                     </div>
                     
                     <div class="caixa_menu_adm">
-                        <div class="caixa_menu_adm_img">
-                            <img src="imagens/admFale.png">
-                        </div>
                         
-                        <div class="caixa_menu_adm_titulo">
-                            <p>Fale Conosco</p>
-                        </div>                    
+                        <a href="admFaleConosco.php">
+                            <div class="caixa_menu_adm_img">
+                                <img src="imagens/admFale.png">
+                            </div>
+
+                            <div class="caixa_menu_adm_titulo">
+                                <p>Fale Conosco</p>
+                            </div>                          
+                        </a>
+                        
+                  
                     </div>
                     
-                    <div class="caixa_menu_adm">
-                        <div class="caixa_menu_adm_img">
-                            <img src="imagens/admProduct.png">
+                    
+                    <a href="admProduto.php">
+                        <div class="caixa_menu_adm">
+
+                            <div class="caixa_menu_adm_img">
+                                <img src="imagens/admProduct.png">
+                            </div>
+
+                            <div class="caixa_menu_adm_titulo">
+                                <p>Produtos</p>
+                            </div>                    
                         </div>
-                        
-                        <div class="caixa_menu_adm_titulo">
-                            <p>Produtos</p>
-                        </div>                    
-                    </div>
+                    </a>                    
+
                     
                     <div class="caixa_menu_adm">
-                        <div class="caixa_menu_adm_img">
-                            <img src="imagens/admUsers.png">
-                        </div>
+                        <a href="admControleUsuario.php">
                         
-                        <div class="caixa_menu_adm_titulo">
-                            <p>Usuários</p>
-                        </div>                    
+                            <div class="caixa_menu_adm_img">
+                                <img src="imagens/admUsers.png">
+                            </div>
+
+                            <div class="caixa_menu_adm_titulo">
+                                <p>Usuários</p>
+                            </div>    
+                        </a>
                     </div>
                 </div>
                 
                 <div class="caixa_menu_direita">
                     <div class="caixa_bem_vindo">
-                        <p>Bem Vindo, David!</p>
+                        <p>Bem Vindo, <?php echo($userLogado)?>!</p>
                     </div>
                     <div class="caixa_sair">
                         <a href="../index.php"><div class="caixa_btnSair">Sign Out</div></a>

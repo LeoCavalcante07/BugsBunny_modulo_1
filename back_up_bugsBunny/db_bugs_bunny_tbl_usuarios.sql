@@ -1,13 +1,13 @@
--- MySQL dump 10.13  Distrib 8.0.12, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 5.7.9, for Win64 (x86_64)
 --
 -- Host: localhost    Database: db_bugs_bunny
 -- ------------------------------------------------------
--- Server version	8.0.12
+-- Server version	5.6.10-log
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
- SET NAMES utf8 ;
+/*!40101 SET NAMES utf8 */;
 /*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
 /*!40103 SET TIME_ZONE='+00:00' */;
 /*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
@@ -21,7 +21,7 @@
 
 DROP TABLE IF EXISTS `tbl_usuarios`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `tbl_usuarios` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nome` varchar(45) NOT NULL,
@@ -33,7 +33,7 @@ CREATE TABLE `tbl_usuarios` (
   UNIQUE KEY `email_UNIQUE` (`email`),
   KEY `idNivel_idx` (`idNivel`),
   CONSTRAINT `idNivel` FOREIGN KEY (`idNivel`) REFERENCES `tbl_niveis` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -42,7 +42,7 @@ CREATE TABLE `tbl_usuarios` (
 
 LOCK TABLES `tbl_usuarios` WRITE;
 /*!40000 ALTER TABLE `tbl_usuarios` DISABLE KEYS */;
-INSERT INTO `tbl_usuarios` VALUES (1,'Leonardo','leo@gmail','123',27,1),(4,'Mariazinha','maria@uol','123',29,1),(5,'Joana','a','a',27,1);
+INSERT INTO `tbl_usuarios` VALUES (1,'Leonardo','leo@gmail','123',27,1),(5,'Joana','a','a',27,1),(6,'marcel NT','marcel@gmail.com','123123',30,1);
 /*!40000 ALTER TABLE `tbl_usuarios` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -55,4 +55,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-11-08  0:48:22
+-- Dump completed on 2018-11-08 11:24:11

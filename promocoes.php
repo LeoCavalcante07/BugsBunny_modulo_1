@@ -5,7 +5,7 @@
     $password = "bcd127";
     $banco = "db_bugs_bunny";
 
-    $imgPromocao = "";
+    $imgPromocao = "imagens/selecione.png";
     $tituloPromocao=""; 
     $descPromocao = "";
     $precoAtual = "";
@@ -49,6 +49,10 @@
         $rsPrecoAntigo = mysqli_fetch_array($select2);
         
         $precoAntigo = $rsPrecoAntigo['preco'];
+        
+//        if($precoAtual > $precoAntigo){
+//            header("location:promocoes.php");
+//        }
         
         
         
@@ -202,6 +206,7 @@
                 <div class="caixa_promocoes_principal">
                     <div class="caixa_promocoes_principal_imagem">
                         <img src="<?php echo($imgPromocao)?>">
+                        
                     </div>
                             <div class="caixa_promocoes_principal_detalhes">
                                 <div class="caixa_promocoes_principal_detalhes_nome">

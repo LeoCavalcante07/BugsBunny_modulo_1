@@ -39,8 +39,11 @@
         <div class="caixa_fale_form">
             
             <header>
-                <div class="header">
-                    <h1>Informações do Comentário</h1>
+                <div class="header" style="color: white;">
+                    <h1 style="float: left; margin-right: 600px;">Informações do Comentário</h1>
+                    <a href="admFaleConosco.php">
+                        <img src="imagens/sair.png" style="float: left;">
+                    </a>
                 </div>
 
             </header>            

@@ -4,7 +4,7 @@
     if(isset($_POST)){
         
        
-        echo("<script> alert('chamouc')</script>");
+        
                           
         $arquivo = $_FILES['fleBanner']['name'];
         //var_dump($arquivo);

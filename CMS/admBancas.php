@@ -22,6 +22,19 @@
     }
 
 
+    $userLogado = "";
+    
+    $idUser = $_SESSION['idUsuario'];
+
+    $sql = "select * from tbl_usuarios where id = ".$idUser;
+
+    $select = mysqli_query($conexao, $sql);
+
+    $rsUsuario = mysqli_fetch_array($select);
+
+    $userLogado = $rsUsuario['nome'];
+
+
     if(isset($_POST)){
         
         if(isset($_POST['txtNomeFoto'])){

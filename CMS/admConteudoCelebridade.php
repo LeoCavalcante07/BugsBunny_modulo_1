@@ -30,6 +30,20 @@
     }
 
 
+
+    $userLogado = "";
+    
+    $idUser = $_SESSION['idUsuario'];
+
+    $sql = "select * from tbl_usuarios where id = ".$idUser;
+
+    $select = mysqli_query($conexao, $sql);
+
+    $rsUsuario = mysqli_fetch_array($select);
+
+    $userLogado = $rsUsuario['nome'];
+
+
     if(isset($_POST)){
         
         if(isset($_POST['txtNomeFoto'])){
@@ -43,7 +57,7 @@
             if($_POST['btnSalvar'] == "Salvar"){
                $sql = "insert into tbl_conteudo_celebridade(titulo, foto, texto, banner, idCelebridade) values('".$titulo."', '".$nomeFoto."', '".$texto."', '".$nomeBanner."', '".$idCelebridade."')"; 
             }else if($_POST['btnSalvar'] == "Editar"){
-                $sql = "update tbl_destaque set titulo = '".$titulo."', foto = '".$nomeFoto."', texto = '".$texto."' where idDestaque = ".$_SESSION['id'];
+                $sql = "update tbl_conteudo_celebridade set titulo = '".$titulo."', foto = '".$nomeFoto."', texto = '".$texto."', banner = '".$nomeBanner."' where idConteudoCelebridade = ".$_SESSION['id'];
             }
             
             if(mysqli_query($conexao, $sql)){
@@ -67,7 +81,7 @@
         $_SESSION['id'] = $id;
         
         if($modo == "excluir"){
-            $sql = "delete from tbl_conteudo_celebridade where idCelebridade =".$id;
+            $sql = "delete from tbl_conteudo_celebridade where idConteudoCelebridade =".$id;
             var_dump($sql);
             if(mysqli_query($conexao, $sql)){
                 echo("<script>alert('Noticia excluida com sucesso')</script>");
@@ -78,7 +92,7 @@
             
             $btnSubmit = "Editar";
             
-            $sql = "select * from tbl_destaque where idDestaque = ".$id;
+            $sql = "select * from tbl_conteudo_celebridade where idConteudoCelebridade = ".$id;
             $select = mysqli_query($conexao, $sql);
             
             $rsDestaque = mysqli_fetch_array($select);
@@ -98,13 +112,16 @@
 
 
     if(isset($_GET['atualizarStatus'])){
+        echo("entrou");
         
         $id = $_GET['id'];
         
         if($_GET['atualizarStatus'] == 0){
-            $sql = "update tbl_destaque set status = 1 where idDestaque = ".$id;
+            echo("1");
+            $sql = "update tbl_conteudo_celebridade set status = 1 where idConteudoCelebridade = ".$id;
         }else{
-            $sql = "update tbl_destaque set status = 0 where idDestaque = ".$id;
+            echo("0");
+            $sql = "update tbl_conteudo_celebridade set status = 0 where idConteudoCelebridade = ".$id;
         }
         
         
@@ -412,15 +429,15 @@
                     </tr>
                     <tr height="50px" align="center">
                         <td colspan="2" >
-                            <a href="admConteudoCelebridade.php?id=<?php echo($rsDestaque['idCelebridade'])?>&modo=excluir">                                
+                            <a href="admConteudoCelebridade.php?id=<?php echo($rsDestaque['idConteudoCelebridade'])?>&modo=excluir">                                
                                 <img src="imagens/delete.png">
                             </a>
                             
-                            <a href="admConteudoCelebridade.php?id=<?php echo($rsDestaque['idCelebridade'])?>&modo=buscar">
+                            <a href="admConteudoCelebridade.php?id=<?php echo($rsDestaque['idConteudoCelebridade'])?>&modo=buscar">
                                 <img src="imagens/edit.png">
                             </a>
                             
-                            <a href="admConteudoCelebridade.php?id=<?php echo($rsDestaque['idCelebridade'])?>&atualizarStatus=<?php echo($status)?>">
+                            <a href="admConteudoCelebridade.php?id=<?php echo($rsDestaque['idConteudoCelebridade'])?>&atualizarStatus=<?php echo($status)?>">
                                 <img src="<?php echo($iconeAtivacao)?>">
                             </a>
                             

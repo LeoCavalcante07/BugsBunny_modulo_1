@@ -142,9 +142,9 @@
             <div class="caixa_principal_celebridade">
                 
                 <?php 
-                    $sql = "select cc.banner, c.nomeCelebridade from tbl_conteudo_celebridade as cc, tbl_celebridade as c where cc.idCelebridade = c.idCelebridade and c.status = 1 order by rand() limit 0,1";
+                    $sql = "select cc.banner, c.nomeCelebridade from tbl_conteudo_celebridade as cc, tbl_celebridade as c where cc.idCelebridade = c.idCelebridade and c.status = 1 and cc.status = 1 order by rand() limit 0,1";
                 
-                    var_dump($sql);
+                    //var_dump($sql);
                     $select = mysqli_query($conexao, $sql);
                 
                     $rsConsulta = mysqli_fetch_array($select);
@@ -161,7 +161,7 @@
                     </div>                    
                     
                 <?php
-                    $sql = "select * from tbl_conteudo_celebridade where status = 1";
+                    $sql = "select * from tbl_conteudo_celebridade as cc, tbl_celebridade as c where c.status = 1 and cc.status = 1";
                 
                     $select = mysqli_query($conexao, $sql);
                     $i = 0;

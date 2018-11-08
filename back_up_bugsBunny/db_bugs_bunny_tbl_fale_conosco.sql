@@ -1,13 +1,13 @@
--- MySQL dump 10.13  Distrib 8.0.12, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 5.7.9, for Win64 (x86_64)
 --
 -- Host: localhost    Database: db_bugs_bunny
 -- ------------------------------------------------------
--- Server version	8.0.12
+-- Server version	5.6.10-log
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
- SET NAMES utf8 ;
+/*!40101 SET NAMES utf8 */;
 /*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
 /*!40103 SET TIME_ZONE='+00:00' */;
 /*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
@@ -21,7 +21,7 @@
 
 DROP TABLE IF EXISTS `tbl_fale_conosco`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `tbl_fale_conosco` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nome` varchar(40) NOT NULL,
@@ -35,7 +35,7 @@ CREATE TABLE `tbl_fale_conosco` (
   `informacoesProduto` varchar(100) DEFAULT NULL,
   `critica` text,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -44,7 +44,7 @@ CREATE TABLE `tbl_fale_conosco` (
 
 LOCK TABLES `tbl_fale_conosco` WRITE;
 /*!40000 ALTER TABLE `tbl_fale_conosco` DISABLE KEYS */;
-INSERT INTO `tbl_fale_conosco` VALUES (6,'Joao','1140028922','11944757131','m','Programador','joao@uol','homepage','facebook','daora','aa'),(9,'Mauricio','(123)6547-8965','(568)75632-1456','m','Programador','mauricio@uol','homepage','facebook','daora','aa'),(10,'Junin','(011)4598-6589','(256)98745-6312','m','Programador','junin@uol','homepage','facebook','daora','aa'),(11,'Marta','(015)9878-9555','(012)56987-4561','m','Gestora','marta@email','homepage','facebook','ruim','aaa'),(12,'John','(134)1324-5245','(545)45454-5454','m','Programador','john@le','homepage','http://localhost/leonardo/bugsBunny/modulo_1/CMS/admFaleConosco.php#','daora','aaaa');
+INSERT INTO `tbl_fale_conosco` VALUES (12,'John','(134)1324-5245','(545)45454-5454','m','Programador','john@le','homepage','http://localhost/leonardo/bugsBunny/modulo_1/CMS/admFaleConosco.php#','daora','aaaa'),(13,'teste do marcel','1231233132','1231233132-','m','alguma coisa','teste@teste.com','http://www.uol.com.br','http://www.uol.com.br/teste','teste','sdf sdf sdf');
 /*!40000 ALTER TABLE `tbl_fale_conosco` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -57,4 +57,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-11-08  0:48:21
+-- Dump completed on 2018-11-08 11:24:10

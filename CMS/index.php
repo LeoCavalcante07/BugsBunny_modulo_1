@@ -8,9 +8,7 @@
     $banco = "db_bugs_bunny";
 
     
-    $userLogado = "";
-    
-    $idUser = $_SESSION['idUsuario'];
+
     
 
 
@@ -18,6 +16,12 @@
     if(!$conexao = mysqli_connect($host, $user, $password, $banco)){
         echo("<script> alert('Houve um eero na conexão com o banco') </script>");
     }
+
+
+
+    $userLogado = "";
+    
+    $idUser = $_SESSION['idUsuario'];
 
     $sql = "select * from tbl_usuarios where id = ".$idUser;
 
@@ -167,7 +171,7 @@
                 
                 
                 <div class="caixa_opt_destaques">
-                    <a href="admBancas.html">
+                    <a href="admBanca.php">
                     
                         <div class="caixa_opt_destaques_img">
                             <img src="imagens/bancas.png">

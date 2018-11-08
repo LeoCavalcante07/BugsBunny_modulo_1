@@ -1,8 +1,50 @@
+<?php
+
+    session_start();
+
+    $host = "localhost";
+    $user = "root";
+    $password = "bcd127";
+    $banco = "db_bugs_bunny";
+
+    
+
+    
+
+
+
+    if(!$conexao = mysqli_connect($host, $user, $password, $banco)){
+        echo("<script> alert('Houve um eero na conexão com o banco') </script>");
+    }
+
+
+
+    $userLogado = "";
+    
+    $idUser = $_SESSION['idUsuario'];
+
+    $sql = "select * from tbl_usuarios where id = ".$idUser;
+
+    $select = mysqli_query($conexao, $sql);
+
+    $rsUsuario = mysqli_fetch_array($select);
+
+    $userLogado = $rsUsuario['nome'];
+
+
+    
+
+
+?>
+
+
 <!doctype html>
 
 <html>
     <head>
         <link rel="stylesheet" href="css/style.css" type="text/css">
+        
+        <meta charset="utf-8">
         
         
         <script src="../js/jquery.min.js"></script>
@@ -110,42 +152,56 @@
                                 <p>Conteúdo</p>
                             </div>                        
                         </a>
+
                     </div>
                     
                     <div class="caixa_menu_adm">
-                        <div class="caixa_menu_adm_img">
-                            <img src="imagens/admFale.png">
-                        </div>
                         
-                        <div class="caixa_menu_adm_titulo">
-                            <p>Fale Conosco</p>
-                        </div>                    
+                        <a href="admFaleConosco.php">
+                            <div class="caixa_menu_adm_img">
+                                <img src="imagens/admFale.png">
+                            </div>
+
+                            <div class="caixa_menu_adm_titulo">
+                                <p>Fale Conosco</p>
+                            </div>                          
+                        </a>
+                        
+                  
                     </div>
                     
-                    <div class="caixa_menu_adm">
-                        <div class="caixa_menu_adm_img">
-                            <img src="imagens/admProduct.png">
+                    
+                    <a href="admProduto.php">
+                        <div class="caixa_menu_adm">
+
+                            <div class="caixa_menu_adm_img">
+                                <img src="imagens/admProduct.png">
+                            </div>
+
+                            <div class="caixa_menu_adm_titulo">
+                                <p>Produtos</p>
+                            </div>                    
                         </div>
-                        
-                        <div class="caixa_menu_adm_titulo">
-                            <p>Produtos</p>
-                        </div>                    
-                    </div>
+                    </a>                    
+
                     
                     <div class="caixa_menu_adm">
-                        <div class="caixa_menu_adm_img">
-                            <img src="imagens/admUsers.png">
-                        </div>
+                        <a href="admControleUsuario.php">
                         
-                        <div class="caixa_menu_adm_titulo">
-                            <p>Usuários</p>
-                        </div>                    
+                            <div class="caixa_menu_adm_img">
+                                <img src="imagens/admUsers.png">
+                            </div>
+
+                            <div class="caixa_menu_adm_titulo">
+                                <p>Usuários</p>
+                            </div>    
+                        </a>
                     </div>
                 </div>
                 
                 <div class="caixa_menu_direita">
                     <div class="caixa_bem_vindo">
-                        <p>Bem Vindo, David!</p>
+                        <p>Bem Vindo, <?php echo($userLogado)?>!</p>
                     </div>
                     <div class="caixa_sair">
                         <a href="../index.php"><div class="caixa_btnSair">Sign Out</div></a>
@@ -158,14 +214,16 @@
             
             <div class="caixa_seg_bancas_opt">
                 <a href="admBancaPrincipal.php">
-                    <div class="caixa_bancas_opt" style="margin-right: 20px;">
+                    <div class="caixa_bancas_opt" style="margin-right: 100px;">
                         <img src="imagens/main.png">
+                        <h1>Banca Principal</h1>
                     </div>                
                 </a>
 
                 <a href="admBancas.php">
                     <div class="caixa_bancas_opt">
-                        <img src="">
+                        <img src="imagens/filiais.png">
+                        <h1>Bancas Filiais</h1>
                     </div>                  
                 </a>
               
