@@ -2,10 +2,8 @@
 
     session_start();
 
-    $host = "localhost";
-    $user = "root";
-    $password = "bcd127";
-    $banco = "db_bugs_bunny";
+    include_once('../conexao.php');
+    $conexao = getConexao();
 
     $btnSubmit = "Salvar";
 
@@ -16,10 +14,6 @@
 
     
     $iconeAtivacao = "imagens/ativado.png";
-
-    if(!$conexao = mysqli_connect($host, $user, $password, $banco)){
-        echo('deu ruim');
-    }
 
 
     $userLogado = "";

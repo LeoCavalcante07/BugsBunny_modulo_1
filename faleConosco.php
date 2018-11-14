@@ -1,12 +1,7 @@
 <?php
     
-    $host = "localhost";
-    $user = "root";
-    $password = "bcd127";
-    $banco = "db_bugs_bunny";
-
-    
-
+    include_once('conexao.php');
+    $conexao = getConexao();
     
    
 //    var_dump($conexao);
@@ -15,33 +10,31 @@
 
 
     if(isset($_GET["btnEnviar"])){
-        if(!$conexao = mysqli_connect($host, $user, $password, $banco)){
-            echo("<script>alert('Ocorreu um erro na conexão com o banco, contate o administrador do site')</script>");
-        }else{
-            
-            $nome = $_GET["txtNome"];
-            $tel = $_GET["txtTel"];
-            $cel = $_GET["txtCel"];
-            $email = $_GET["txtEmail"];
-            $sexo = $_GET["rdoSexo"];
-            $profissao = $_GET["txtProfissao"];
-            $homePage = $_GET["txtHomePage"];
-            $facebook = $_GET["txtFacebook"];
-            $infProduto = $_GET["txtInfProduto"];
-            $critica = $_GET["txtCritica"];   
-            
-                    
 
 
-            $sql = "insert into tbl_fale_conosco(nome, telefone, celular, email, sexo, profissao, homePage, linkFacebook, informacoesProduto, critica) values('".$nome."', '".$tel."', '".$cel."', '".$email."', '".$sexo."', '".$profissao."', '".$homePage."', '".$facebook."', '".$infProduto."', '".$critica."');";
+        $nome = $_GET["txtNome"];
+        $tel = $_GET["txtTel"];
+        $cel = $_GET["txtCel"];
+        $email = $_GET["txtEmail"];
+        $sexo = $_GET["rdoSexo"];
+        $profissao = $_GET["txtProfissao"];
+        $homePage = $_GET["txtHomePage"];
+        $facebook = $_GET["txtFacebook"];
+        $infProduto = $_GET["txtInfProduto"];
+        $critica = $_GET["txtCritica"];   
 
-            //var_dump($sql);
 
 
-            mysqli_query($conexao, $sql);
 
-            header('location:faleConosco.php');            
-        }
+        $sql = "insert into tbl_fale_conosco(nome, telefone, celular, email, sexo, profissao, homePage, linkFacebook, informacoesProduto, critica) values('".$nome."', '".$tel."', '".$cel."', '".$email."', '".$sexo."', '".$profissao."', '".$homePage."', '".$facebook."', '".$infProduto."', '".$critica."');";
+
+        //var_dump($sql);
+
+
+        mysqli_query($conexao, $sql);
+
+        header('location:faleConosco.php');            
+        
 
     }
 

@@ -2,16 +2,8 @@
 
     session_start();
 
-    $host = "localhost";
-    $user = "root";
-    $password = "bcd127";
-    $banco = "db_bugs_bunny";
-  
-    if(!$conexao = mysqli_connect($host, $user, $password, $banco)){
-        echo('Houve um erro na conexão com o banco');
-    }
-
-
+    include_once('conexao.php');
+    $conexao = getConexao();
 
 ?>
 

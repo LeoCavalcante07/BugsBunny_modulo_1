@@ -1,11 +1,8 @@
 <?php
 
-    include_once('../conexao.php');
-
     session_start();
-
-
-
+    
+    include_once('../conexao.php');
     $conexao = getConexao();
 
 

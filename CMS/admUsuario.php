@@ -8,11 +8,8 @@
 
     $btnSalvar = "Inserir";
 
-    $host = "localhost";
-    $usuario = "root";
-    $senha = "bcd127";
-    $banco = "db_bugs_bunny";
-
+    include_once('../conexao.php');
+    $conexao = getConexao();
 
     $nomeUsuario = "";
     $email = "";
@@ -21,12 +18,6 @@
     //variavel que será usada para selecionar a opção do combox que vier do banco
     $selected = "";
 
-
-
-
-    if(!$conexao = mysqli_connect($host, $usuario, $senha, $banco)){
-        echo("<script>alert('Houve um erro na conexão com o banco')</script>");
-    }
 
 
     $userLogado = "";
