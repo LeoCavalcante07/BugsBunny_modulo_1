@@ -92,6 +92,13 @@
 
 
 
+    if(isset($_GET['id'])){
+        $_SESSION['idCelebridade'] = $_GET['id'];
+        header("location:admConteudoCelebridade.php");
+    }
+
+
+
 
     if(isset($_GET['atualizarStatus'])){
         
@@ -100,6 +107,7 @@
         if($_GET['atualizarStatus'] == 0){
             //para uma celebridade estar ativa, todas as outras devem estar desativadas, então antes de atualizar o status d euma celebridade, todas as outras devem ser atualizadas para desativado
             $sql = "update tbl_celebridade set status = 0";
+           
             mysqli_query($conexao, $sql);
             
             $sql = "update tbl_celebridade set status = 1 where idCelebridade = ".$id;
@@ -121,8 +129,6 @@
 
 
 ?>
-
-
 
 
 <!doctype html>
@@ -367,7 +373,7 @@
                                 <img src="imagens/edit.png">
                             </a>
                             
-                            <a href="admConteudoCelebridade.php?id=<?php echo($rsDestaque['idCelebridade'])?>">
+                            <a href="admCelebridades.php?id=<?php echo($rsDestaque['idCelebridade'])?>">
                                 <img src="imagens/add.png">
                             </a>
                             

@@ -153,7 +153,7 @@
                     </div>                    
                     
                 <?php
-                    $sql = "select * from tbl_conteudo_celebridade as cc, tbl_celebridade as c where c.status = 1 and cc.status = 1";
+                    $sql = "select c.idCelebridade, c.nomeCelebridade, c.status, cc.idConteudoCelebridade, cc.titulo, cc.texto, cc.foto, cc.banner, cc.idCelebridade, cc.status from tbl_conteudo_celebridade as cc, tbl_celebridade as c where c.status = 1 and cc.status = 1 and c.idCelebridade = cc.idCelebridade";
                 
                     $select = mysqli_query($conexao, $sql);
                     $i = 0;

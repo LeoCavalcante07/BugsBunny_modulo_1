@@ -299,7 +299,8 @@
                 
 <!--                FOTO-->
                 <div class="seg_content" style="margin-right: 50px;">
-                    <div id="visualizarFoto" onclick="escolherFoto()">                          <h1>Foto</h1>
+                    <div id="visualizarFoto" onclick="escolherFoto()">
+                        <h1>Foto</h1>
                         <?php echo($imagem)?>
                     </div>
                     <form id="frmFoto" action="upload.php" method="post" enctype="multipart/form-data">
@@ -368,7 +369,14 @@
             <table width="300px" height="300px" border="1px">
                 
                 <?php
-                    $sql = "select * from tbl_conteudo_celebridade";
+                    
+                    
+//                    $sql = "select cc.idConteudoCelebridade, cc.titulo, cc.texto, cc.foto, cc.banner, cc.status, c.status  from tbl_conteudo_celebridade as cc, tbl_celebridade as c where cc.status = 1 and c.status = 1 and cc.idCelebridade = ".$_SESSION['idCelebridade'];
+    
+                    $sql = "select * from tbl_conteudo_celebridade where idCelebridade  = ".$_SESSION['idCelebridade'];
+                        
+                    var_dump($sql);
+                        
                     $select = mysqli_query($conexao, $sql);
                     
                     $i = 0; // variavel que sera concatenada com o id de cada objeto FILE para diferencia-los
@@ -377,7 +385,7 @@
                         $status = $rsDestaque['status'];
                         
                         if($status == 0){
-                            $iconeAtivacao = "imagens/desativado.png";
+                            $iconeAtivacao = "imagens/desativado.png"; 
                         }else{
                             $iconeAtivacao = "imagens/ativado.png";
                         }
